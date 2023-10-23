@@ -1,0 +1,56 @@
+.login{
+        background: linear-gradient(120deg, #2B3467, #537FE7, #0E21A0) border-box;
+    }
+.login form{
+    background-color: #14427254;
+    height: auto;
+    box-shadow: 2px 2px 20px #000;
+}
+.login form input[type="text"],
+.login form input[type="password"]{
+    border: none;
+    font-size: 20px;
+}
+
+
+.login form input[type="text"]:focus,
+.login form input[type="password"]:focus{
+    outline: none;
+    box-shadow: 5px 2px 20px 10px #E1CEB5;
+}
+.login form legend{
+    color: white;
+    font-size: 40px;
+    font-family: 'Playpen Sans', cursive;
+}
+.login form button[type='submit']{
+    border: none;
+    background-color: #5F9DF7;
+    color: white;
+    font-size: 20px;
+    transition: 0.3s;
+}
+.login form button[type='submit']:hover{
+    background-color: #537FE7;
+}
+.login .logo{
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-family: 'Pacifico', cursive;
+    color: white;
+    font-size: 40px;
+}
+.SignUpLinkCon{
+    color: white;
+}
+.SignUpLink{
+    text-decoration: none;
+    color: white;
+    transition: 0.3s;
+    font-size: 20px;
+    background-color: #5F9DF7;
+}
+.SignUpLink:hover{
+    background-color: #537FE7;
+}

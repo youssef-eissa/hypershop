@@ -1,0 +1,41 @@
+body{
+    background-color: #cdcdcd !important;
+}
+.signup{
+    background-color: white;
+}
+.signup h1{
+    font-family: 'Playpen Sans', cursive;
+}
+.signup form input{
+    border: 1px solid #cdcdcd;
+    font-size: 20px;
+}
+.signup form input:focus{
+    outline: none;
+}
+.signup form label{
+    font-size: 25px;
+    font-family: 'Playpen Sans', cursive;
+}
+.signup form label span {
+    color: red;
+}
+form label
+.welcomeBox div{
+    left: 10px;
+    bottom: 10px;
+    color: white;
+    font-size: 20px;
+    font-family: 'Playpen Sans', cursive;
+}
+.welcomeBox div span{
+    font-family: 'Pacifico', cursive;
+}
+.welcomeBox .overlay{
+    background-color: rgba(0, 0, 0, 0.5);
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
