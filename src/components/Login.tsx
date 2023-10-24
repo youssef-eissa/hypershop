@@ -53,10 +53,9 @@ const getUserInfo=()=> {
         mutationFn: loginUser,
         onSuccess: (data) => {
             setToken(data.data.token)
-            navigate('/')
         }
     })
-    
+
 async function checkUser(password: string,username:string) {
     const existeduser = UsersInfoArray?.find((user: UserInfo) => user.username === username) 
     mutate({
@@ -65,6 +64,8 @@ async function checkUser(password: string,username:string) {
     })
     if (existeduser?.password === password && isSuccess && existeduser?.username === username) {
         setcorrectPassword(true)
+            navigate('/home')
+
     }
 }
 
@@ -92,13 +93,16 @@ return (
     <div className='container-fluid'>
         <div className='row'>
             <div className='login col-12 p-0 position-relative min-vh-100 d-flex justify-content-center align-items-center flex-column'>
+                <div className='loginCircle col-12 position-absolute'></div>
+                <div className='loginCircle col-12 position-absolute'></div>
                 <div className='col-12 logo p-2 text-center'>HyperShop</div>
-                <form onSubmit={FormhandleSubmit} autoComplete='off' className='col-5 p-3 d-flex flex-column justify-content-center align-items-center '>
-                    <legend className='col-12 text-center p-3'>Login</legend>
+                <form onSubmit={FormhandleSubmit} autoComplete='off' className='col-5 p-3 d-flex position-relative z-3 flex-column justify-content-center align-items-center overflow-hidden '>
+                    <div className='formBackground position-absolute col-12'></div>
+                    <legend className='col-8 text-center p-3'>Login</legend>
                         <input
                         onChange={handleChange}
                         placeholder='Username'
-                        className='mb-2 col-11 py-3 px-2 rounded'
+                        className='mb-2 col-9 py-3 px-2 rounded'
                         type='text'
                         name='username'
                         value={values.username}
@@ -108,7 +112,7 @@ return (
                     {errors.username && touched.username && <p style={{ color: 'red' }} className=' col-11 text-start mb-2'>{errors.username}</p>}
                         <input
                         onChange={handleChange}
-                        className='mb-3 col-11 py-3 px-2 rounded'
+                        className='mb-3 col-9 py-3 px-2 rounded'
                         placeholder='Password'
                         type='password'
                         onBlur={handleBlur}
@@ -117,7 +121,7 @@ return (
                         autoComplete='current-password'
                     />
                     {errors.password && touched.password && <p style={{ color: 'red' }} className=' col-11 text-start mb-2'>{errors.password}</p> }
-                    <button className='col-3 rounded d-flex justify-content-center align-items-center p-2' type='submit'>Submit</button>
+                    <button className='col-3 rounded d-flex justify-content-center align-items-center p-2' type='submit'>Sign in</button>
                     <div className='col-12 d-flex justify-content-center align-items-center  mt-2 SignUpLinkCon flex-column'>
                         <span className='col-12 text-center my-2'>Don't have an account?</span>
                         <Link reloadDocument onClick={() =>setSignup(true)} className=' col-3 text-center ms-2 SignUpLink rounded p-2 ' to='/signup'>Sign Up</Link> </div>

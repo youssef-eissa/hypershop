@@ -41,7 +41,7 @@ return (
         </DialogContentText>
         </DialogContent>
         <DialogActions>
-        <Link style={{ textDecoration: 'none'}} className='primary-btn' to="/login" onClick={handleClose}>
+        <Link style={{ textDecoration: 'none'}} className='primary-btn' to="/" onClick={handleClose}>
             Login
         </Link>
         </DialogActions>

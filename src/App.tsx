@@ -22,13 +22,15 @@ const [signup,setSignup]=useLocalStorage<boolean>('signup',false)
     <div >
       {token === undefined &&!signup && !correctPassword ?
         <Routes>
-          <Route  path="/login" element={ <Login setToken={setToken as (userToken: UserToken) => void} user={user as UserInfo} dispatch={dispatch as () => UserInfo} setcorrectPassword={setcorrectPassword as () => boolean} setSignup={setSignup as () => boolean} />} />
+          <Route  path="/" element={ <Login setToken={setToken as (userToken: UserToken) => void} user={user as UserInfo} dispatch={dispatch as () => UserInfo} setcorrectPassword={setcorrectPassword as () => boolean} setSignup={setSignup as () => boolean} />} />
         </Routes> : token === undefined &&signup && !correctPassword ? <Routes>
       <Route path="/signup" element={<Signup setSignup={setSignup as () => boolean} />} />
-            <Route path="/" element={ <Home/>} />
+            <Route path="/home" element={ <Home/>} />
         </Routes>
           : <>
-            <Home />
+            <Routes>
+              <Route path="/home" element={<Home/>} />
+            </Routes>
           </>
       }
 
