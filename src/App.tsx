@@ -22,16 +22,19 @@ const [signup,setSignup]=useLocalStorage<boolean>('signup',false)
   return (
     <div >
       {token === undefined &&!signup && !correctPassword ?
-        <Login setToken={setToken as (userToken: UserToken) => void} user={user as UserInfo} dispatch={dispatch as () => UserInfo} setcorrectPassword={setcorrectPassword as () => boolean} setSignup={setSignup as () => boolean} /> : <>
         <Routes>
-      <Route path="/signup" element={<Signup />} />
+          <Route  path="/login" element={ <Login setToken={setToken as (userToken: UserToken) => void} user={user as UserInfo} dispatch={dispatch as () => UserInfo} setcorrectPassword={setcorrectPassword as () => boolean} setSignup={setSignup as () => boolean} />} />
+        </Routes> : token === undefined &&signup && !correctPassword ? <Routes>
+      <Route path="/signup" element={<Signup setSignup={setSignup as () => boolean} />} />
             <Route path="/" element={ <Home/>} />
         </Routes>
-        <button onClick={() => { localStorage.clear(); window.location.reload(); dispatch(resetUser())}}>logout</button>
-        </>
+          : <>
+            <Home />
+          </>
         
+//  <button onClick={() => { localStorage.clear(); window.location.reload(); dispatch(resetUser())}}>logout</button>
       }
-      
+
     </div>
   );
 }

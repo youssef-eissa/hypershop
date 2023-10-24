@@ -9,6 +9,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import { useState } from 'react';
+import ResponsiveDialog from './materialUI/dialog';
 
 
 
@@ -19,9 +20,12 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
 ) {
     return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
-function Signup() {
-        const [NotificationOpen, setNotificationOpen] = useState(false);
 
+type TSignup={
+    setSignup: (e:boolean)=>boolean;
+}
+function Signup({setSignup}: TSignup) {
+        const [NotificationOpen, setNotificationOpen] = useState(false);
         const handleClick = () => {
     setNotificationOpen(true);
         };
@@ -41,10 +45,12 @@ function Signup() {
         confirmPassword: yup.string().required('Confirm password is required').oneOf([yup.ref('password')], 'Passwords do not match', )
     })
 
-    const { mutate ,isPending} = useMutation({
+    const { mutate ,isPending ,isSuccess} = useMutation({
         mutationFn: loginUser,
         onSuccess: (data) => {
             handleClick()
+            // navigate('/login')
+            // setSignup(false)
         }
     })
     
@@ -177,6 +183,7 @@ return (
                             Account created successfully
                     </Alert>
                     </Snackbar>
+                    {isSuccess && <ResponsiveDialog setSignup={setSignup as (e: boolean) => boolean}  />}
                     <div className='col-6 rounded overflow-hidden position-relative welcomeBox'>
                         <img alt='signupImg' className='img-fluid h-100' src={require('../assets/signup.jpeg')} />
                         <div className='position-absolute z-3 col-12'>Welcome to <span>HyperShop</span>
