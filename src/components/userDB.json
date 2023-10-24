@@ -5,91 +5,16 @@
       "name": "Youssef Eissa",
       "username": "yousef3issa",
       "email": "yousef.issa@me.com",
-      "password": "12345678"
+      "password": "12345678",
+      "carts": []
     },
     {
       "id": 2,
-      "name": "ewqewq",
-      "username": "ewqewq",
-      "email": "ewqewq@ewq.co",
-      "password": "ewqewqewq"
-    },
-    {
-      "id": 3,
-      "name": "youssef",
-      "username": "eissaaa",
-      "email": "dsadsa@dsa.com",
-      "password": "321321321"
-    },
-    {
-      "id": 4,
-      "name": "ewqew",
-      "username": "ewqewq",
-      "email": "ewqewq@ewqewq.com",
-      "password": "ewqewqewq"
-    },
-    {
-      "id": 5,
-      "name": "ewqewq",
-      "username": "ewqewq",
-      "email": "ewqewq@ewq.com",
-      "password": "ewqewqewq"
-    },
-    {
-      "id": 6,
-      "name": "ewewq",
-      "username": "ewqewq",
-      "email": "ewqewq@ewq.co",
-      "password": "ewqewqewq"
-    },
-    {
-      "id": 7,
-      "name": "ewqew",
-      "username": "ewqewq",
-      "email": "ewqeqw@ewq.com",
-      "password": "ewqewqewq"
-    },
-    {
-      "id": 8,
-      "name": "ewqewq",
-      "username": "ewqewq",
-      "email": "ewqewq@ewq.com",
-      "password": "ewqewqewq"
-    },
-    {
-      "id": 9,
-      "name": "ewqewq",
-      "username": "ewqewq",
-      "email": "ewqewq@ewqewq.com",
-      "password": "ewqewqewq"
-    },
-    {
-      "id": 10,
-      "name": "ewqewq",
-      "username": "ewqewq",
-      "email": "ewqewqewq@ewq.com",
-      "password": "ewqewqewq"
-    },
-    {
-      "id": 11,
-      "name": "ewqewq",
-      "username": "ewqewq",
-      "email": "ewqewqewq@ewq.com",
-      "password": "ewqewqewq"
-    },
-    {
-      "id": 12,
-      "name": "ewqewq",
-      "username": "ewqewq",
-      "email": "ewqewq@ewq.com",
-      "password": "ewqewqewq"
-    },
-    {
-      "id": 13,
-      "name": "ewqewq",
-      "username": "ewqewq",
-      "email": "ewqewq@ewq.com",
-      "password": "ewqewqewq"
+      "name": "aa",
+      "username": "aa",
+      "email": "aa@ds.c",
+      "password": "11111111",
+      "carts": []
     }
   ]
 }

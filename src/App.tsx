@@ -7,10 +7,12 @@ import { UserInfo } from "./types/app";
 import { Route, Routes } from "react-router-dom";
 import Signup from "./components/Signup";
 import Home from "./components/Home";
+import NavBar from "./components/NavBar";
 
 
 
 function App() {
+  
   const user=useSelector<{user:{user:UserInfo}}>((state)=>state.user.user)
   const dispatch=useDispatch()
   const { token, setToken } = useToken()
@@ -28,6 +30,7 @@ const [signup,setSignup]=useLocalStorage<boolean>('signup',false)
             <Route path="/home" element={ <Home/>} />
         </Routes>
           : <>
+            <NavBar />
             <Routes>
               <Route path="/home" element={<Home/>} />
             </Routes>

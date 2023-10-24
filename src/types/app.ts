@@ -10,5 +10,18 @@ export type UserInfo = {
     name: string;
     email: string;
     password: string;
-    username:string
+    username: string;
+    carts: {
+        id: number;
+        title: string;
+        discription: string;
+        price: number;
+        discountPercentage: number;
+        rating: number;
+        stock: number;
+        brand: string;
+        category: string;
+        thumbnail: string;
+        images: string[]
+    }[]
 }

@@ -70,7 +70,8 @@ function Signup({setSignup}: TSignup) {
             name: values.fullname,
             username: values.username,
             email: values.email,
-            password: values.password
+            password: values.password,
+            carts: []
         })
             }
             handleReset(values)
