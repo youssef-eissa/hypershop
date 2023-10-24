@@ -47,10 +47,9 @@ function Signup({setSignup}: TSignup) {
 
     const { mutate ,isPending ,isSuccess} = useMutation({
         mutationFn: loginUser,
-        onSuccess: (data) => {
+        onSuccess: () => {
             handleClick()
-            // navigate('/login')
-            // setSignup(false)
+            
         }
     })
     

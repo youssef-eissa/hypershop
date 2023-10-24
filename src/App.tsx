@@ -4,7 +4,6 @@ import { UserToken } from "./types/app";
 import useLocalStorage from "use-local-storage";
 import { useDispatch, useSelector } from 'react-redux';
 import { UserInfo } from "./types/app";
-import {resetUser } from "./redux/user";
 import { Route, Routes } from "react-router-dom";
 import Signup from "./components/Signup";
 import Home from "./components/Home";
@@ -31,8 +30,6 @@ const [signup,setSignup]=useLocalStorage<boolean>('signup',false)
           : <>
             <Home />
           </>
-        
-//  <button onClick={() => { localStorage.clear(); window.location.reload(); dispatch(resetUser())}}>logout</button>
       }
 
     </div>
