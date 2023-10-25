@@ -15,13 +15,20 @@ import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import './AppBar.css';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector,useDispatch } from 'react-redux';
 import { UserInfo } from '../../types/app';
+import { useNavigate } from 'react-router-dom';
+import { resetUser } from '../../redux/user';
 
 const pages = ['Product', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
-
-function ResponsiveAppBar() {
+type TResponsiveAppBar = {
+    setSignup: (e:boolean) => boolean;
+    setcorrectPassword: (r:boolean) => boolean;
+}
+function ResponsiveAppBar({ setSignup, setcorrectPassword }: TResponsiveAppBar) {
+    const dispatch=useDispatch()
+    const navigate = useNavigate()
     const user = useSelector<{ user: { user: UserInfo } }>((state) => state.user.user) as UserInfo
 const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
 const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
@@ -40,6 +47,13 @@ const handleCloseNavMenu = () => {
 const handleCloseUserMenu = () => {
     setAnchorElUser(null);
 };
+    function handlelogout() {
+        setSignup(false)
+        setcorrectPassword(false)
+        dispatch(resetUser())
+        navigate('/')
+        localStorage.clear()
+    }
 
 return (
     <AppBar sx={{ backgroundColor: "transparent",boxShadow: "none",padding:0 }} position="static">
@@ -127,11 +141,12 @@ return (
                     <Link className='col-5 me-5' to='/cart'> <ShoppingCartIcon sx={{ color: 'white', ":hover": { color: "#F99417" },transition: '0.3s' }} /></Link>
             <Tooltip title="Open settings">
             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt={user.name.toUpperCase()} src="/static/images/avatar/2.jpg" />
+                <Avatar alt={user?.name.toUpperCase()} src="/static/images/avatar/2.jpg" />
             </IconButton>
             </Tooltip>
-            <Menu
-            sx={{ mt: '45px' }}
+                    <Menu
+                        
+            sx={{ mt: '45px', }}
             id="menu-appbar"
             anchorEl={anchorElUser}
             anchorOrigin={{
@@ -146,11 +161,7 @@ return (
             open={Boolean(anchorElUser)}
             onClose={handleCloseUserMenu}
             >
-            {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-            ))}
+            <button onClick={handlelogout} className=''>logout</button>
             </Menu>
         </Box>
         </Toolbar>

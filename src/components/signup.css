@@ -1,5 +1,5 @@
 body{
-    background-color: #cdcdcd !important;
+    background-color: #f3f3f3 !important;
 }
 .signup{
     background-color: white;
@@ -21,7 +21,6 @@ body{
 .signup form label span {
     color: red;
 }
-form label
 .welcomeBox div{
     left: 10px;
     bottom: 10px;

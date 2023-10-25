@@ -1,0 +1,58 @@
+.footer{
+    background-color: #051922;
+    color: white;
+    padding: 100px;
+}
+.footer h1{
+    position: relative;
+    height: 50px;
+}
+.footer h1::before {
+    position: absolute;
+    content: '';
+    width: 10%;
+    height: 2px;
+    background-color: #F99417;
+    left: 0px;
+    bottom: -10px;
+}
+.footer p{
+    color: white;
+    filter: contrast(9.1%);
+    line-height: 1.8;
+    font-size: 14px;
+}
+.footer ul{
+    list-style: none;
+}
+.footer .icon{
+    left: -20px;
+    border: none;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #F99417;
+}
+.footerLink{
+    text-decoration: none;
+    color: white;
+    transition: 0.3s;
+}
+.footerLink:hover{
+    color: #F99417;
+}
+.footer form input[type="email"]{
+    background-color: #012738;
+    border: none;
+    color: white;
+}
+
+.footer form input:focus{
+    outline: none;
+}
+.footer button{
+    height: 56px;
+    position: relative;
+    top: 10px;
+    background-color: #012738;
+    border: none;
+}

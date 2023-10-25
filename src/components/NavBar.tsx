@@ -1,13 +1,16 @@
 import './NavBar.css'
 import ResponsiveAppBar from './materialUI/AppBar';
 
-
-function NavBar() {
+type TNavBar = {
+    setSignup: (e : boolean) => boolean;
+    setcorrectPassword: (e:boolean) => boolean;
+}
+function NavBar({ setSignup, setcorrectPassword }: TNavBar) {
 return (
-    <div className='container position-relative navbarCon'>
-        <div className='row  '>
+    <div className='container position-absolute navbarCon'>
+        <div className='row'>
             <div className='col-12 p-0'>
-                <ResponsiveAppBar  />
+                <ResponsiveAppBar setSignup={setSignup as (e : boolean) => boolean} setcorrectPassword={setcorrectPassword as (e:boolean) => boolean}  />
             </div>
         </div>
 

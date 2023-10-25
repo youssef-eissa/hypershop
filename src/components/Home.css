@@ -1,0 +1,165 @@
+.ShopNowLink{
+    text-decoration: none;
+    color: white;
+    left: 50%;
+    top: 80%;
+    transform: translate(-50%, -50%);
+    background-color: #F99417;
+    transition: 0.3s;
+}
+.ShopNowLink:hover{
+    background-color: #FFCD4B;
+}
+.overlayImgSlider{
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgb(0, 0, 0,0.4);
+}
+.icon{
+    border: 1px dashed #F99417;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+}
+
+.props span{
+    color: #051922;
+}
+.products{
+    background-color: white;
+}
+.imgBoxSlider{
+    height: 300px;
+}
+.productBoxSlider{
+    box-shadow: 1px 1px 5px 1px #000;
+    transition: 0.3s;
+}
+.productBoxSlider:hover{
+    box-shadow: none;
+}
+.productOffSlider {
+
+    width: 100px;
+    height: 100px;
+    background-color: #F99417;
+    color: white;
+    border-radius: 50%;
+    font-family: 'Playpen Sans', cursive;
+}
+.productOffSlider span{
+    font-size: 20px;
+}
+.priceSlider span{
+    font-family: 'Playpen Sans', cursive;
+    font-size: 20px;
+    color: #F99417;
+}
+.productBoxSlider button{
+    border: none;
+    color: white;
+    background-color: #F99417;
+    transition: 0.3s;
+}
+.productsTitleHomePage div:nth-child(1){
+    font-family: 'Playpen Sans', cursive;
+    font-size: 50px;
+    position: relative;
+}
+.productsTitleHomePage div:nth-child(2) {
+    font-family: 'Playpen Sans', cursive;
+    font-size: 20px;
+    position: relative;
+    color: #555;
+}
+.productsTitleHomePage div:nth-child(1)::before{
+    position: absolute;
+    content: '';
+    width: 20%;
+    height: 2px;
+    background-color: #F99417;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+}
+.productsTitleHomePage div:nth-child(1) span{
+    color: #F99417;
+}
+.testName{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #cdcdcd;
+    color: #555;
+    font-size: 25px;
+    font-family: 'Playpen Sans', cursive;
+}
+.titleTest{
+    font-family: 'Playpen Sans', cursive;
+    font-size: 20px;
+}
+.testimonials p{
+    font-family: 'Playpen Sans', cursive;
+    font-size: 15px;
+}
+.aboutHome{
+    background-color: white;
+}
+.homeAboutPage{
+    height: 400px;
+}
+.aboutBox > span{
+    font-size: 20px;
+    color: #555;
+    font-family: 'Playpen Sans', cursive;
+}
+.aboutBox h3{
+    font-weight: 900;
+    font-size: 50px;
+}
+.aboutBox h3 span{
+    color: #F99417;
+    font-family: 'Pacifico', cursive !important;
+}
+.aboutBox p{
+    font-size: 18px;
+    color: #555;
+}
+.toabout{
+    text-decoration: none;
+    color: white;
+    background-color: #F99417;
+    transition: 0.3s;
+}
+.toabout:hover{
+    background-color: #FFCD4B;
+}
+.marqueeBrand{
+    font-size: 30px;
+    font-family: 'Playpen Sans', cursive;
+    color: #555;
+}
+.titleMarquee{
+    font-family: 'Playpen Sans', cursive;
+    font-size: 50px;
+    color: #555;
+    position: relative;
+}
+.titleMarquee::before{
+    position: absolute;
+    content: '';
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 10%;
+    height: 2px;
+    background-color: #F99417;
+}
+.titleMarquee span {
+    color: #F99417;
+}
+.marqueeBox{
+    background-color: white;
+}

@@ -1,6 +1,6 @@
 import './Login.css'
 import axios from 'axios';
-import { UserToken, loginInfo,UserInfo } from '../types/app';
+import { UserToken, loginInfo,OneUser } from '../types/app';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { setUser,resetUser } from '../redux/user';
 import * as yup from 'yup'
@@ -14,8 +14,8 @@ import { Link, useNavigate } from 'react-router-dom';
 type TLogin={
     setToken: (userToken: UserToken) => void;
     setcorrectPassword: (e:boolean)=>boolean;
-    user: UserInfo;
-    dispatch: (e: any) => UserInfo;
+    user: OneUser;
+    dispatch: (e: any) => OneUser;
     setSignup: (e:boolean)=>boolean;
 }
 function Login({ setToken, setcorrectPassword, user, dispatch, setSignup }: TLogin) {
@@ -46,7 +46,7 @@ const getUserInfo=()=> {
     const { data:UsersInfoArray,isSuccess} = useQuery({
         queryKey: ['users'],
         queryFn: getUserInfo,
-        select: (data) => data.data as UserInfo[]
+        select: (data) => data.data as OneUser[]
     })
 
 
@@ -58,7 +58,7 @@ const getUserInfo=()=> {
     })
 
 async function checkUser(password: string,username:string) {
-    const existeduser = UsersInfoArray?.find((user: UserInfo) => user.username === username) 
+    const existeduser = UsersInfoArray?.find((user: OneUser) => user.username === username) 
     mutate({
         username: values.username,
         password: values.password
@@ -83,7 +83,7 @@ function FormhandleSubmit(e: React.FormEvent<HTMLFormElement>) {
 }
     function handleBlurLogin(username: string) {
         dispatch(resetUser())
-        const existeduser = UsersInfoArray?.find((user: UserInfo) => user.username === username)
+        const existeduser = UsersInfoArray?.find((user: OneUser) => user.username === username)
         if (existeduser) {
         dispatch(setUser(existeduser))
         }
