@@ -32,6 +32,7 @@ import axios from 'axios';
 import { useMutation } from '@tanstack/react-query';
 import { useState } from 'react';
 import Marquee from "react-fast-marquee";
+import { Button } from './ReusableComponents/Button.style';
 
 
 interface IUpdateCart {
@@ -40,9 +41,10 @@ interface IUpdateCart {
 }
 type THome = {
     allProducts: ProductsArray;
-    user: OneUser
+    user: OneUser;
+    token: string;
 }
-function Home({ allProducts, user }: THome) {
+function Home({ allProducts, user,token }: THome) {
     const [theUpdatedUser, setTheUpdatedUser] = useState<OneUser>(user)
     function UpdateUser(arg: IUpdateCart) {
         const { id, UpdatedUser } = arg
@@ -77,6 +79,7 @@ function Home({ allProducts, user }: THome) {
     }
     }]
     }
+
     const ProductsSettings = {
     dots: false,
     speed: 1000,
@@ -84,7 +87,8 @@ function Home({ allProducts, user }: THome) {
     infinite: true,
     touchMove: true,
         nextArrow: <ArrowForwardIcon fontSize='medium' sx={{ backgroundColor: 'white', color: '#F99417', transition: '0.3s', border: '1px solid #F99417', borderRadius: '50%' }} />,
-        prevArrow: <ArrowBackIcon fontSize='medium' sx={{ backgroundColor: 'white', color: '#F99417', transition: '0.3s', border: '1px solid #F99417', borderRadius: '50%' }} />,
+        prevArrow: <ArrowBackIcon  onClick={ ()=>console.log('clicked')
+        } className='slick-prev slick-arrow' fontSize='medium' sx={{ backgroundColor: 'white', color: '#F99417', transition: '0.3s', border: '1px solid #F99417', borderRadius: '50%' }} />,
     responsive: [{
     breakpoint: 1700,
     initialSlide: 1,
@@ -96,11 +100,12 @@ function Home({ allProducts, user }: THome) {
     }
     const TestimonialsSettings = {
     dots: false,
-    autoplay:true,
     speed: 1000,
     arrows: false,
     infinite: true,
     touchMove: true,
+    autoplay:true,
+    autoplaySpeed:3000,
     responsive: [{
     breakpoint: 1700,
     initialSlide: 1,
@@ -113,14 +118,13 @@ function Home({ allProducts, user }: THome) {
     }
     const brands = allProducts?.map((product: Product) => product.brand)
     const brandsArray= Array.from(new Set(brands))
-    console.log(brandsArray);
     
 
 return (
     <div className='container-fluid'>
         <div className='row d-flex justify-content-center slider&props '>
             <div className='col-12 d-flex justify-content-center p-0 '>
-                <Slider autoplay={true} autoplaySpeed={3000}  className='col-12 ' {...settings}>
+                <Slider  className='col-12 ' {...settings}>
                     <div className='vh-100 position-relative'>
                         <div className='col-12 position-absolute overlayImgSlider'></div>
                         <img className='img-fluid w-100 h-100' alt='smartphones' src={smartPhones} />
@@ -259,7 +263,7 @@ return (
                     <div className='col-4 text-center'><span>Our</span> Products</div>
                     <div className='col-4 text-center my-3'>Check all of our products</div>
                 </div>
-                <Slider className='col-10 ' {...ProductsSettings}>
+                <Slider  className='col-10 ' {...ProductsSettings}>
                     {allProducts?.map((product:Product)=>{
                         return <div className='d-flex justify-content-center p-1'  key={product.id}>
                             <div className=' col-10 p-2 d-flex flex-column align-items-center rounded productBoxSlider' >
@@ -271,7 +275,7 @@ return (
                                     Price: <span className='me-1'>{product.price}</span>$
                                 </div>
                                 <div className='d-flex justify-content-center align-items-center productOffSlider'> <span>{product.discountPercentage}%</span> Off</div>
-                                <button onClick={() => handleUpdate(product)} className='col-5 mt-3 p-2 rounded'>Add to cart</button>
+                                <Button onClick={() => handleUpdate(product)} className='col-5 mt-3 p-2 rounded'>Add to cart</Button>
                             </div>
                         </div>
                     })}

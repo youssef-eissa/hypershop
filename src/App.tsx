@@ -15,11 +15,9 @@ import Footer from "./components/Footer";
 
 function App() {
   const user = useSelector<{ user: { user: OneUser } }>((state) => state.user.user)
-console.log(user);
-  
+
   const dispatch=useDispatch()
   const { token, setToken } = useToken()
-  const [correctPassword, setcorrectPassword] = useLocalStorage<boolean>('password', false)
   const [signup, setSignup] = useLocalStorage<boolean>('signup', false)
     function getData() {
     return axios.get('https://dummyjson.com/products?limit=0')
@@ -31,25 +29,26 @@ console.log(user);
     })
 
 
+  if (!token && !signup) {
+    return <Login
+    token={token as string} setToken={setToken as (userToken: UserToken) => void} user={user as OneUser} dispatch={dispatch as () => OneUser}  setSignup={setSignup as () => boolean}
+    />
 
+  } else if (!token && signup) {
+    return <Routes>
+          <Route path="/signup" element={<Signup setSignup={setSignup as () => boolean} />}/>
+    </Routes>
+  }
 
   return (
     <div >
-      {token === undefined &&!signup && !correctPassword ?
+      <>
+            <NavBar setSignup={setSignup as (e:boolean) => boolean}  />
         <Routes>
-          <Route  path="/" element={ <Login setToken={setToken as (userToken: UserToken) => void} user={user as OneUser} dispatch={dispatch as () => OneUser} setcorrectPassword={setcorrectPassword as () => boolean} setSignup={setSignup as () => boolean} />} />
-        </Routes> : token === undefined &&signup && !correctPassword ? <Routes>
-      <Route path="/signup" element={<Signup setSignup={setSignup as () => boolean} />} />
-        </Routes>
-          : <>
-            <NavBar setSignup={setSignup as (e:boolean) => boolean} setcorrectPassword={setcorrectPassword as (e:boolean) => boolean} />
-            <Routes>
-              <Route path="/home" element={<Home user={user as OneUser} allProducts={allProducts as ProductsArray} />} />
+              <Route path="/" element={<Home user={user as OneUser} allProducts={allProducts as ProductsArray} token={token as string} />} />
             </Routes>
             <Footer/>
           </>
-      }
-
     </div>
   );
 }

@@ -6,22 +6,19 @@ import { setUser,resetUser } from '../redux/user';
 import * as yup from 'yup'
 import { useFormik } from 'formik';
 import { Link, useNavigate } from 'react-router-dom';
-
-
-
+import { Button } from './ReusableComponents/Button.style';
+import CircularProgress from '@mui/material/CircularProgress';
 
 
 type TLogin={
     setToken: (userToken: UserToken) => void;
-    setcorrectPassword: (e:boolean)=>boolean;
     user: OneUser;
     dispatch: (e: any) => OneUser;
-    setSignup: (e:boolean)=>boolean;
+    setSignup: (e: boolean) => boolean;
+    token:string
 }
-function Login({ setToken, setcorrectPassword, user, dispatch, setSignup }: TLogin) {
+function Login({ setToken,  user, dispatch, setSignup }: TLogin) {
     const navigate = useNavigate()
-    
-
     const schema =yup.object().shape({
         username: yup.string().required('Username is required').oneOf([user.username], 'Username is incorrect'),
         password: yup.string().required('Password is required').oneOf([user.password], 'Password is incorrect')
@@ -33,7 +30,9 @@ function Login({ setToken, setcorrectPassword, user, dispatch, setSignup }: TLog
         },
         validationSchema: schema,
         onSubmit: (value) => {
-            handleReset(value)
+        handleReset(value)
+        checkUser(values.password, values.username)
+
         },
 
         validateOnChange:true
@@ -43,55 +42,52 @@ function Login({ setToken, setcorrectPassword, user, dispatch, setSignup }: TLog
 const getUserInfo=()=> {
     return axios.get('http://localhost:3001/users')
 }
-    const { data:UsersInfoArray,isSuccess} = useQuery({
+    const { data:UsersInfoArray} = useQuery({
         queryKey: ['users'],
         queryFn: getUserInfo,
-        select: (data) => data.data as OneUser[]
+        select: (data) => data.data as OneUser[],
     })
 
+function loginUser(info:loginInfo) {
+    return axios.post('http://localhost:8080/login', info)
+}
 
-    const {mutate}=useMutation({
+    const {mutate,status} = useMutation({
         mutationFn: loginUser,
         onSuccess: (data) => {
-            setToken(data.data.token)
-        }
+            setToken( data?.data)
+
+        },
+
     })
 
-async function checkUser(password: string,username:string) {
-    const existeduser = UsersInfoArray?.find((user: OneUser) => user.username === username) 
-    mutate({
+    function checkUser(password: string, username: string) {
+    const existeduser = UsersInfoArray?.find((user: OneUser) => user.username === username)
+        if (existeduser?.password === password && existeduser?.username === username) {
+        mutate({
         username: values.username,
         password: values.password
-    })
-    if (existeduser?.password === password && isSuccess && existeduser?.username === username) {
-        setcorrectPassword(true)
-            navigate('/home')
-
+        })
+        navigate('/')
     }
 }
 
+    function FormhandleSubmit(e: React.FormEvent<HTMLFormElement>) {
 
-
-async function loginUser(info:loginInfo) {
-    return axios.post('http://localhost:8080/login',info )
-}
-
-function FormhandleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     handleSubmit()
-    checkUser(values.password,values.username)
 }
     function handleBlurLogin(username: string) {
         dispatch(resetUser())
         const existeduser = UsersInfoArray?.find((user: OneUser) => user.username === username)
         if (existeduser) {
-        dispatch(setUser(existeduser))
+            dispatch(setUser(existeduser))
         }
     }
 
 
 return (
-    <div className='container-fluid'>
+    <div className='container-fluid overflow-hidden'>
         <div className='row'>
             <div className='login col-12 p-0 position-relative min-vh-100 d-flex justify-content-center align-items-center flex-column'>
                 <div className='loginCircle col-12 position-absolute'></div>
@@ -122,7 +118,7 @@ return (
                         autoComplete='current-password'
                     />
                     {errors.password && touched.password && <p style={{ color: 'red' }} className=' col-11 text-start mb-2'>{errors.password}</p> }
-                    <button className='col-3 rounded d-flex justify-content-center align-items-center p-2' type='submit'>Sign in</button>
+                    <Button className='col-3 rounded d-flex justify-content-center align-items-center p-2' type='submit'>Sign in{status==='pending' && <CircularProgress className='ms-2' size={24} sx={{color:'white'}} />}</Button>
                     <div className='col-12 d-flex justify-content-center align-items-center  mt-2 SignUpLinkCon flex-column'>
                         <span className='col-12 text-center my-2'>Don't have an account?</span>
                         <Link reloadDocument onClick={() =>setSignup(true)} className=' col-3 text-center ms-2 SignUpLink rounded p-2 ' to='/signup'>Sign Up</Link> </div>

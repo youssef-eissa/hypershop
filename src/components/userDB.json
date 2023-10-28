@@ -119,6 +119,62 @@
           ]
         }
       ]
+    },
+    {
+      "id": 2,
+      "name": "youssef",
+      "username": "youssef",
+      "email": "youis@dsa.com",
+      "password": "11111111",
+      "carts": []
+    },
+    {
+      "id": 3,
+      "name": "ewqewq",
+      "username": "ewqewq",
+      "email": "ewqewq@ewq.ewq",
+      "password": "ewqewqewq",
+      "carts": []
+    },
+    {
+      "id": 4,
+      "name": "aa",
+      "username": "dsa",
+      "email": "dsa2dsa@dsa.dsa",
+      "password": "dsadsadsadsa",
+      "carts": []
+    },
+    {
+      "id": 5,
+      "name": "ewqewq",
+      "username": "ewq",
+      "email": "ewq@ewq.ewq",
+      "password": "ewqewqewq",
+      "carts": []
+    },
+    {
+      "id": 6,
+      "name": "ewqewq",
+      "username": "ewqewq",
+      "email": "ewq@ewq.co",
+      "password": "ewqewqewq",
+      "carts": []
+    },
+    {
+      "id": 7,
+      "name": "ewqewqewq",
+      "username": "ewq",
+      "email": "ewqewq@ewq.ewq",
+      "password": "ewqewqewq",
+      "carts": []
+    },
+    {
+      "id": 8,
+      "name": "ewqewq",
+      "username": "ewqewq",
+      "email": "ewqewq@ewq.e",
+      "password": "ewqewqewq",
+      "carts": []
     }
   ]
 }

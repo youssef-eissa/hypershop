@@ -24,7 +24,7 @@
 }
 
 .formBackground{
-    z-index: -1;
+    z-index: -1000;
     background-color: rgb(118, 118, 118);
     opacity: 0.5;
     filter: contrast(50%);
@@ -49,16 +49,7 @@
     font-size: 40px;
     font-family: 'Playpen Sans', cursive;
 }
-.login form button[type='submit']{
-    border: none;
-    background-color: #F99417;
-    color: white;
-    font-size: 20px;
-    transition: 0.3s;
-}
-.login form button[type='submit']:hover{
-    background-color: #FFCD4B;
-}
+
 .login .logo{
     position: absolute;
     left: 0;

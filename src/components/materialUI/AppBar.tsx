@@ -21,12 +21,10 @@ import { useNavigate } from 'react-router-dom';
 import { resetUser } from '../../redux/user';
 
 const pages = ['Product', 'Pricing', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 type TResponsiveAppBar = {
     setSignup: (e:boolean) => boolean;
-    setcorrectPassword: (r:boolean) => boolean;
 }
-function ResponsiveAppBar({ setSignup, setcorrectPassword }: TResponsiveAppBar) {
+function ResponsiveAppBar({ setSignup }: TResponsiveAppBar) {
     const dispatch=useDispatch()
     const navigate = useNavigate()
     const user = useSelector<{ user: { user: UserInfo } }>((state) => state.user.user) as UserInfo
@@ -49,10 +47,10 @@ const handleCloseUserMenu = () => {
 };
     function handlelogout() {
         setSignup(false)
-        setcorrectPassword(false)
         dispatch(resetUser())
-        navigate('/')
+        navigate('/login')
         localStorage.clear()
+        window.location.reload()
     }
 
 return (
@@ -69,10 +67,10 @@ return (
             textDecoration: 'none',
             }}
         >
-        <div className='col-12 d-flex-column align-items-center logo '>
+        <Link reloadDocument style={{textDecoration:'none'}} to='/' className='col-12 d-flex-column align-items-center logo '>
         <div className='col-12 d-flex  justify-content-center align-items-center logo'><ShoppingBasketIcon className='me-2'/> HyperShop</div>
         <span className='col-12 text-center'>Online store</span>
-            </div>
+            </Link>
         </Typography>
 
         <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -131,7 +129,7 @@ return (
             LOGO
         </Typography>
         <Box  sx={{ flexGrow:1 , display: { xs: 'none', md: 'flex' } }}>
-            <Link className='col-2 toSection text-center' to='/home' >Home</Link>
+            <Link reloadDocument className='col-2 toSection text-center' to='/' >Home</Link>
                     <Link className='col-2 toSection text-center' to='/about' >About</Link>
                     <Link className='col-2 toSection text-center' to='/shop' >Shop</Link>
                     <Link className='col-2 toSection text-center' to='/contact' >Contact</Link>
@@ -141,7 +139,7 @@ return (
                     <Link className='col-5 me-5' to='/cart'> <ShoppingCartIcon sx={{ color: 'white', ":hover": { color: "#F99417" },transition: '0.3s' }} /></Link>
             <Tooltip title="Open settings">
             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt={user?.name.toUpperCase()} src="/static/images/avatar/2.jpg" />
+                <Avatar alt={user?.name} src="/static/images/avatar/2.jpg" />
             </IconButton>
             </Tooltip>
                     <Menu

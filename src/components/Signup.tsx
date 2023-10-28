@@ -45,13 +45,14 @@ function Signup({setSignup}: TSignup) {
         confirmPassword: yup.string().required('Confirm password is required').oneOf([yup.ref('password')], 'Passwords do not match', )
     })
 
-    const { mutate ,isPending ,isSuccess} = useMutation({
+    const { mutate ,isSuccess,status} = useMutation({
         mutationFn: loginUser,
         onSuccess: () => {
             handleClick()
             
         }
     })
+    
     
 
     const { values, handleSubmit, handleReset, handleBlur, handleChange, errors, touched} = useFormik({
@@ -84,11 +85,11 @@ function Signup({setSignup}: TSignup) {
         queryKey: ['users'],
         queryFn: getUsers,
         select: (data) => data.data as UserInfo[],
+
     })
 
-    async function loginUser(info:UserInfo) {
-        const response = await axios.post('http://localhost:3001/users', info)
-        return response.data
+    function loginUser(info:UserInfo) {
+        return  axios.post('http://localhost:3001/users', info)
     }
 
 
@@ -96,7 +97,6 @@ function Signup({setSignup}: TSignup) {
     function handleForm(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault()
         handleSubmit()
-
     }
 
 
@@ -176,7 +176,7 @@ return (
                             autoComplete='off'
                         />
                         {touched.confirmPassword && errors.confirmPassword && <p style={{ color: 'red' }} className='col-11'>{errors.confirmPassword}</p>}
-                        <button type='submit' className='btn btn-primary col-3 d-flex align-items-center justify-content-center'>Register {isPending && <CircularProgress className='ms-2' size={24} sx={{color:'white'}} />}</button>
+                        <button type='submit' className='btn btn-primary col-7 d-flex align-items-center justify-content-center'>Register {status==='pending' && <CircularProgress className='ms-2' size={24} sx={{color:'white'}} />}</button>
                     </form>
                     <Snackbar open={NotificationOpen} autoHideDuration={6000} onClose={handleClose}>
                         <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
