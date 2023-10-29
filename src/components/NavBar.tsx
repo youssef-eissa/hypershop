@@ -9,7 +9,7 @@ return (
     <div className='container position-absolute navbarCon'>
         <div className='row'>
             <div className='col-12 p-0'>
-                <ResponsiveAppBar setSignup={setSignup as (e : boolean) => boolean}   />
+                <ResponsiveAppBar setSignup={setSignup as (e : boolean) => boolean} />
             </div>
         </div>
 

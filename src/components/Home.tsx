@@ -1,5 +1,6 @@
 import './Home.css'
 import Slider from "react-slick";
+import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 import smartPhones from '../assets/smartphones.jpeg'
 import laptops from '../assets/laptops.webp'
@@ -25,7 +26,7 @@ import about from '../assets/about.avif'
 import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined';
 import PhoneInTalkOutlinedIcon from '@mui/icons-material/PhoneInTalkOutlined';
 import CachedOutlinedIcon from '@mui/icons-material/CachedOutlined';
-import { ProductsArray, Product,OneUser } from '../types/app';
+import {  Product,OneUser } from '../types/app';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import axios from 'axios';
@@ -40,11 +41,9 @@ interface IUpdateCart {
     UpdatedUser:OneUser
 }
 type THome = {
-    allProducts: ProductsArray;
     user: OneUser;
-    token: string;
 }
-function Home({ allProducts, user,token }: THome) {
+function Home({  user }: THome) {
     const [theUpdatedUser, setTheUpdatedUser] = useState<OneUser>(user)
     function UpdateUser(arg: IUpdateCart) {
         const { id, UpdatedUser } = arg
@@ -116,8 +115,16 @@ function Home({ allProducts, user,token }: THome) {
     }
     }]
     }
+        function getData() {
+    return axios.get('https://dummyjson.com/products?limit=0')
+    }
+    const {data:allProducts } = useQuery({
+        queryKey: ['products'],
+        queryFn: getData,
+        select: (data) => data.data.products
+    })
     const brands = allProducts?.map((product: Product) => product.brand)
-    const brandsArray= Array.from(new Set(brands))
+    const brandsArray= Array.from(new Set(brands)) as string[]
     
 
 return (
@@ -329,7 +336,7 @@ return (
                         Our <span>Brands</span>
                     </div>
                     <Marquee className='col-12 marqueeBox p-3 rounded'>
-                        {brandsArray?.map((brand: string) => {
+                        {brandsArray.map((brand: string) => {
                             return <div className='ms-5 marqueeBrand' key={brand}>{brand}</div>
                         })}
                     </Marquee>

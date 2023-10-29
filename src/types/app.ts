@@ -59,10 +59,11 @@ export type ProductsArray = {
         thumbnail: string;
         images: string[]
 }[]
+
 export type Product = {
-    id: number;
+        id: number;
         title: string;
-        discription: string;
+        description: string;
         price: number;
         discountPercentage: number;
         rating: number;

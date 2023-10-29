@@ -1,15 +1,14 @@
 import Login from "./components/Login";
 import useToken from "./components/hooks/useToken";
-import { UserToken , ProductsArray,OneUser} from "./types/app";
+import { UserToken ,OneUser} from "./types/app";
 import useLocalStorage from "use-local-storage";
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes } from "react-router-dom";
 import Signup from "./components/Signup";
 import Home from "./components/Home";
 import NavBar from "./components/NavBar";
-import axios from 'axios';
-import { useQuery } from '@tanstack/react-query';
 import Footer from "./components/Footer";
+import Shop from "./components/Shop";
 
 
 
@@ -19,14 +18,10 @@ function App() {
   const dispatch=useDispatch()
   const { token, setToken } = useToken()
   const [signup, setSignup] = useLocalStorage<boolean>('signup', false)
-    function getData() {
-    return axios.get('https://dummyjson.com/products?limit=0')
-    }
-    const {data:allProducts } = useQuery({
-        queryKey: ['products'],
-        queryFn: getData,
-        select: (data) => data.data.products
-    })
+    
+
+  
+  
 
 
   if (!token && !signup) {
@@ -43,10 +38,11 @@ function App() {
   return (
     <div >
       <>
-            <NavBar setSignup={setSignup as (e:boolean) => boolean}  />
+        <NavBar setSignup={setSignup as (e:boolean) => boolean}  />
         <Routes>
-              <Route path="/" element={<Home user={user as OneUser} allProducts={allProducts as ProductsArray} token={token as string} />} />
-            </Routes>
+              <Route path="/" element={<Home user={user as OneUser}  />} />
+        <Route path="/shop" element={ <Shop/>} />
+        </Routes>
             <Footer/>
           </>
     </div>

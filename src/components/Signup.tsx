@@ -183,7 +183,7 @@ return (
                             Account created successfully
                     </Alert>
                     </Snackbar>
-                    {isSuccess && <ResponsiveDialog setSignup={setSignup as (e: boolean) => boolean}  />}
+                    {isSuccess && <ResponsiveDialog setSignup={setSignup as (e: boolean) => boolean} />}
                     <div className='col-6 rounded overflow-hidden position-relative welcomeBox'>
                         <img alt='signupImg' className='img-fluid h-100' src={require('../assets/signup.jpeg')} />
                         <div className='position-absolute z-3 col-12'>Welcome to <span>HyperShop</span>

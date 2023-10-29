@@ -19,12 +19,14 @@ import { useSelector,useDispatch } from 'react-redux';
 import { UserInfo } from '../../types/app';
 import { useNavigate } from 'react-router-dom';
 import { resetUser } from '../../redux/user';
+import { useLocation } from 'react-router-dom';
 
 const pages = ['Product', 'Pricing', 'Blog'];
 type TResponsiveAppBar = {
     setSignup: (e:boolean) => boolean;
 }
 function ResponsiveAppBar({ setSignup }: TResponsiveAppBar) {
+    const location=useLocation()
     const dispatch=useDispatch()
     const navigate = useNavigate()
     const user = useSelector<{ user: { user: UserInfo } }>((state) => state.user.user) as UserInfo
@@ -45,18 +47,18 @@ const handleCloseNavMenu = () => {
 const handleCloseUserMenu = () => {
     setAnchorElUser(null);
 };
-    function handlelogout() {
+function handlelogout() {
+    localStorage.clear()
         setSignup(false)
         dispatch(resetUser())
-        navigate('/login')
-        localStorage.clear()
         window.location.reload()
+        navigate('/login')
     }
 
 return (
     <AppBar sx={{ backgroundColor: "transparent",boxShadow: "none",padding:0 }} position="static">
-        <Container  maxWidth="xl">
-        <Toolbar  disableGutters>
+        <Container maxWidth="xl">
+        <Toolbar disableGutters>
                 <Typography
             variant="h6"
             noWrap
@@ -67,10 +69,10 @@ return (
             textDecoration: 'none',
             }}
         >
-        <Link reloadDocument style={{textDecoration:'none'}} to='/' className='col-12 d-flex-column align-items-center logo '>
+                    <div style={{ cursor: 'pointer' }} onClick={() => { navigate('/'); window.location.reload()}} className='col-12 d-flex-column align-items-center logo '>
         <div className='col-12 d-flex  justify-content-center align-items-center logo'><ShoppingBasketIcon className='me-2'/> HyperShop</div>
         <span className='col-12 text-center'>Online store</span>
-            </Link>
+            </div>
         </Typography>
 
         <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -129,21 +131,21 @@ return (
             LOGO
         </Typography>
         <Box  sx={{ flexGrow:1 , display: { xs: 'none', md: 'flex' } }}>
-            <Link reloadDocument className='col-2 toSection text-center' to='/' >Home</Link>
-                    <Link className='col-2 toSection text-center' to='/about' >About</Link>
-                    <Link className='col-2 toSection text-center' to='/shop' >Shop</Link>
-                    <Link className='col-2 toSection text-center' to='/contact' >Contact</Link>
+            <Link style={location.pathname === '/' ? { color: '#F99417' } : { color: 'white' }} reloadDocument className='col-2 toSection text-center' to='/' >Home</Link>
+            <Link style={location.pathname==='/about'? { color: '#F99417' } : {color: 'white'}} reloadDocument className='col-2 toSection text-center' to='/about' >About</Link>
+            <Link style={location.pathname==='/shop'? { color: '#F99417' } : {color: 'white'}} reloadDocument className='col-2 toSection text-center' to='/shop' >Shop</Link>
+            <Link style={location.pathname==='/contact'? { color: '#F99417' } : {color: 'white'}} reloadDocument className='col-2 toSection text-center' to='/contact' >Contact</Link>
         </Box>
 
                 <Box sx={{ flexGrow: 0 }}>
                     <Link className='col-5 me-5' to='/cart'> <ShoppingCartIcon sx={{ color: 'white', ":hover": { color: "#F99417" },transition: '0.3s' }} /></Link>
             <Tooltip title="Open settings">
             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt={user?.name} src="/static/images/avatar/2.jpg" />
+                <Avatar alt={user?.name.toUpperCase()} src="/static/images/avatar/2.jpg" />
             </IconButton>
             </Tooltip>
                     <Menu
-                        
+
             sx={{ mt: '45px', }}
             id="menu-appbar"
             anchorEl={anchorElUser}
