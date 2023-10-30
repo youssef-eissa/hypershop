@@ -26,43 +26,21 @@ import about from '../assets/about.avif'
 import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined';
 import PhoneInTalkOutlinedIcon from '@mui/icons-material/PhoneInTalkOutlined';
 import CachedOutlinedIcon from '@mui/icons-material/CachedOutlined';
-import {  Product,OneUser } from '../types/app';
+import {  Product } from '../types/app';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import axios from 'axios';
-import { useMutation } from '@tanstack/react-query';
-import { useState } from 'react';
 import Marquee from "react-fast-marquee";
 import { Button } from './ReusableComponents/Button.style';
 import { setProduct } from '../redux/product';
 import { useDispatch } from 'react-redux';
 
 
-interface IUpdateCart {
-    id:number;
-    UpdatedUser:OneUser
-}
-type THome = {
-    user: OneUser;
-}
-function Home({ user }: THome) {
-    const dispatch=useDispatch()
-    const [theUpdatedUser, setTheUpdatedUser] = useState<OneUser>(user)
-    function UpdateUser(arg: IUpdateCart) {
-        const { id, UpdatedUser } = arg
-        return axios.put(`http://localhost:3001/users/${id}`,UpdatedUser)
-    }
 
-    const { mutate } = useMutation({
-        mutationFn: UpdateUser,
-        onSuccess: (data) => {
-            console.log(data)
-        }
-    })
-    function handleUpdate(product:Product) {
-        setTheUpdatedUser({ ...theUpdatedUser, carts: [...theUpdatedUser.carts as any, product] as any })
-        mutate({ id: theUpdatedUser.id, UpdatedUser: theUpdatedUser })
-    }
+
+function Home() {
+    const dispatch=useDispatch()
+
 
     const settings = {
     fade: true,
@@ -285,7 +263,7 @@ return (
                                     Price: <span className='me-1'>{product.price}</span>$
                                 </div>
                                 <div className='d-flex justify-content-center align-items-center productOffSlider'> <span>{product.discountPercentage}%</span> Off</div>
-                                <Button className='col-5 mt-3 p-2 rounded'>More Info</Button>
+                                <Button  className='col-5 mt-3 p-2 rounded'>More Info</Button>
                             </div>
                         </Link>
                     })}

@@ -1,36 +1,45 @@
-import { useSelector } from "react-redux"
+import { useSelector, useDispatch } from "react-redux"
 import { Wrapper } from "./ReusableComponents/Wrapper.style"
 import './productPage.css'
 import { Button } from "./ReusableComponents/Button.style"
 import axios from "axios"
-import { useMutation } from "@tanstack/react-query"
-import { OneUser ,Product,ProductsArray} from "../types/app"
-import { useState } from "react"
+import { useMutation,useQueryClient ,QueryFilters} from "@tanstack/react-query"
+import { OneUser ,Product} from "../types/app"
+import { setUser } from "../redux/user";
 
-type IUpdateCart = {
-    id: number;
-    UpdatedUser: OneUser;
-}
+
+
 type IProductPage = {
-    user:OneUser
+    user: OneUser;
+    isSuccess: boolean;
+    refetch: () => void
 }
-function ProductPage({user}:IProductPage) {
+function ProductPage({ user, isSuccess, refetch }: IProductPage) {
+    const queryClient = useQueryClient()
+
+const dispatch=useDispatch()
     const product = useSelector<{ product: { product: Product } }>((state) => state.product.product) as Product
 
-    const [theUpdatedUser, setTheUpdatedUser] = useState<OneUser>(user)
+    function UpdateUserCart(id:number) {
+        return axios.put(`http://localhost:3001/users/${id}`,{...user,carts:isSuccess&&[...user.carts ,product]})
+    }
 
-    function UpdateUserCart(arg:IUpdateCart) {
-        const { id, UpdatedUser } = arg
-        return axios.put(`http://localhost:3001/users/${id}`,UpdatedUser)
-    }
     const { mutate } = useMutation({
-        mutationFn:UpdateUserCart
+        mutationKey: ['UpdateUserCart'],
+        mutationFn: UpdateUserCart,
+        onSuccess: (data) => {
+        queryClient.setQueriesData(['removeProduct'] as QueryFilters, data)
+
+
+        }
     })
-    function handleUpdate(product: Product) {
-        setTheUpdatedUser({ ...theUpdatedUser, carts: [...theUpdatedUser.carts as ProductsArray, product] as ProductsArray })
-        mutate({id:theUpdatedUser.id, UpdatedUser: theUpdatedUser})
+    function handleUpdate(id: number) {
+        dispatch(setUser(user))
+        mutate(id)
+        window.scrollTo(0, 0)
     }
-    
+
+
 return (
     <div className="container-fluid">
         <div className="row">
@@ -58,7 +67,7 @@ return (
                         </div>
                     })}
                 </div>
-                <Button onClick={() => handleUpdate(product)} className="col-3 mt-3 rounded p-3">Add to cart</Button>
+                <Button onClick={() => { isSuccess && handleUpdate(user.id)}} className="col-3 mt-3 rounded p-3">Add to cart</Button>
             </div>
         </div>
 

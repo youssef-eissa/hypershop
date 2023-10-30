@@ -39,10 +39,10 @@ return (
                     <div className='col-3 footerbox align-content-start p-2 d-flex flex-wrap'>
                     <h1 className='col-12 mb-4'>Pages</h1>
                     <ul className='col-12 d-flex flex-column'>
-                        <Link to='/home' className='col-12 mb-2 position-relative footerLink'>Home <ArrowForwardIosIcon className='icon position-absolute' sx={{ fontSize: 15 }}/> </Link>
-                        <Link to='/about' className='col-12 mb-2 footerLink position-relative'>About <ArrowForwardIosIcon className='icon position-absolute' sx={{ fontSize: 15 }}/></Link>
-                        <Link to='/shop' className='col-12 mb-2 footerLink position-relative'>Shop <ArrowForwardIosIcon className='icon position-absolute' sx={{ fontSize: 15 }}/></Link>
-                        <Link to='/contact' className='col-12 footerLink position-relative'> Contact <ArrowForwardIosIcon className='icon position-absolute' sx={{ fontSize: 15 }}/></Link>
+                        <Link onClick={()=>{window.scrollTo(0,0)}} to='/' className='col-12 mb-2 position-relative footerLink'>Home <ArrowForwardIosIcon className='icon position-absolute' sx={{ fontSize: 15 }}/> </Link>
+                        <Link onClick={()=>{window.scrollTo(0,0)}} to='/about' className='col-12 mb-2 footerLink position-relative'>About <ArrowForwardIosIcon className='icon position-absolute' sx={{ fontSize: 15 }}/></Link>
+                        <Link onClick={()=>{window.scrollTo(0,0)}} to='/shop' className='col-12 mb-2 footerLink position-relative'>Shop <ArrowForwardIosIcon className='icon position-absolute' sx={{ fontSize: 15 }}/></Link>
+                        <Link onClick={()=>{window.scrollTo(0,0)}} to='/contact' className='col-12 footerLink position-relative'> Contact <ArrowForwardIosIcon className='icon position-absolute' sx={{ fontSize: 15 }}/></Link>
                     </ul>
 
                 </div>

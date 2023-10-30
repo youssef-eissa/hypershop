@@ -12,24 +12,26 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import './AppBar.css';
 import { Link } from 'react-router-dom';
-import { useSelector,useDispatch } from 'react-redux';
-import { UserInfo } from '../../types/app';
+import { useDispatch } from 'react-redux';
+import { OneUser } from '../../types/app';
 import { useNavigate } from 'react-router-dom';
 import { resetUser } from '../../redux/user';
 import { useLocation } from 'react-router-dom';
+import CustomizedBadges from './CartBadge';
 
 const pages = ['Product', 'Pricing', 'Blog'];
 type TResponsiveAppBar = {
-    setSignup: (e:boolean) => boolean;
+    setSignup: (e: boolean) => boolean;
+    isSuccess: boolean;
+    user: OneUser;
 }
-function ResponsiveAppBar({ setSignup }: TResponsiveAppBar) {
+function ResponsiveAppBar({ setSignup,user,isSuccess }: TResponsiveAppBar) {
     const location=useLocation()
     const dispatch=useDispatch()
     const navigate = useNavigate()
-    const user = useSelector<{ user: { user: UserInfo } }>((state) => state.user.user) as UserInfo
+    
 const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
 const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
@@ -57,7 +59,7 @@ function handlelogout() {
 
 return (
     <AppBar sx={{ backgroundColor: "transparent",boxShadow: "none",padding:0 }} position="static">
-        <Container maxWidth="xl">
+        <Container style={{padding:0}} maxWidth="xl">
         <Toolbar disableGutters>
                 <Typography
             variant="h6"
@@ -66,11 +68,11 @@ return (
             sx={{
             mr: 2,
             display: { xs: 'none', md: 'flex' },
-            textDecoration: 'none',
+                textDecoration: 'none',
             }}
         >
-                    <div style={{ cursor: 'pointer' }} onClick={() => { navigate('/'); window.location.reload()}} className='col-12 d-flex-column align-items-center logo '>
-        <div className='col-12 d-flex  justify-content-center align-items-center logo'><ShoppingBasketIcon className='me-2'/> HyperShop</div>
+        <div style={{ cursor: 'pointer' }} onClick={() => { navigate('/'); window.location.reload()}} className='col-12 d-flex-column align-items-center logo '>
+        <div className='col-12 d-flex  justify-content-center align-items-center logo'><ShoppingBasketIcon className='me-2'/>HyperShop</div>
         <span className='col-12 text-center'>Online store</span>
             </div>
         </Typography>
@@ -138,10 +140,10 @@ return (
         </Box>
 
                 <Box sx={{ flexGrow: 0 }}>
-                    <Link className='col-5 me-5' to='/cart'> <ShoppingCartIcon sx={{ color: 'white', ":hover": { color: "#F99417" },transition: '0.3s' }} /></Link>
+            <Link reloadDocument className='col-5 me-5' to='/cart'> <CustomizedBadges user={user as OneUser} isSuccess={isSuccess} /></Link>
             <Tooltip title="Open settings">
             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt={user?.name.toUpperCase()} src="/static/images/avatar/2.jpg" />
+                <Avatar alt={user?.name} src="/static/images/avatar/2.jpg" />
             </IconButton>
             </Tooltip>
                     <Menu
