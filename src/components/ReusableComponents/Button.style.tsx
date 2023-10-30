@@ -5,6 +5,7 @@ export const Button = styled.button`
     color: white;
     border: none;
     transition:0.3s;
+    font-size:20px;
     &:hover{
         background-color: #FFCD4B;
     }

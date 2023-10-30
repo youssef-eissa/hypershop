@@ -34,7 +34,7 @@ export type OneUser = {
     carts: {
         id: number;
         title: string;
-        discription: string;
+        description: string;
         price: number;
         discountPercentage: number;
         rating: number;
@@ -43,13 +43,15 @@ export type OneUser = {
         category: string;
         thumbnail: string;
         images: string[]
-    }
+    }[]
 }
+
+
 
 export type ProductsArray = {
         id: number;
         title: string;
-        discription: string;
+        description: string;
         price: number;
         discountPercentage: number;
         rating: number;

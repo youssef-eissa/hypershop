@@ -1,4 +1,3 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
@@ -15,6 +14,7 @@ import { persistReducer, persistStore } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
 import storage from 'redux-persist/lib/storage';
 import { userSlicer } from './redux/user';
+import { productReducer } from './redux/product';
 
 
 const client = new QueryClient();
@@ -22,11 +22,12 @@ const client = new QueryClient();
 const persistConfig = {
   key: 'root',
   version: 1,
-  whitelist: ['user'],
+  whitelist: ['user','product'],
   storage,
 };
 const reducer = combineReducers({
-  user: userSlicer
+  user: userSlicer,
+  product:productReducer
 })
 const PersistReducer= persistReducer(persistConfig, reducer);
 const store = configureStore({

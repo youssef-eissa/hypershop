@@ -4,6 +4,8 @@ import { ThreeCircles } from 'react-loader-spinner'
 import { Link } from 'react-router-dom';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
+import { useDispatch } from 'react-redux';
+import { setProduct } from '../../redux/product';
 type TProductsMapping = {
     products: ProductsArray;
     isSuccess?: boolean;
@@ -13,6 +15,7 @@ type TProductsMapping = {
     handlePaginationChange: (e: any, value: number) => void
 }
 const ProductsMapping: FC<TProductsMapping> = ({ products, isSuccess, isFetching,total,handlePaginationChange,isSuccessCategories }: TProductsMapping) => {
+    const dispatch=useDispatch()
 
     const Success = isSuccessCategories || isSuccess
 return (
@@ -20,19 +23,18 @@ return (
         <div className='row'>
             <div className='col-12 p-4  allProductsShop d-flex flex-wrap gap-3 justify-content-center'>
                 {Success&& !isFetching ?products.map((product:any) => {
-                    return <Link style={{ textDecoration: 'none', color: 'black' }} to={`/shop/${product.id}`} key={product.id} className='col-3 row-gap-2 d-flex flex-column productShop p-3 rounded'>
+                    return <Link onClick={()=>dispatch(setProduct(product))} style={{ textDecoration: 'none', color: 'black' }} to={`/shop/${product.id}`} key={product.id} className='col-3 row-gap-2 d-flex flex-column productShop p-3 rounded'>
                         <div className='col-12 rounded imgShopBox overflow-hidden'>
                             <img className='img-fluid h-100 w-100' src={product.thumbnail} alt={product.title}/>
                         </div>
                         <div className='col-12 d-flex productShopTitle flex-column'>
                             <div className='col-12'> Title : <span>{product.title}</span></div>
                         </div>
-                        <p>{product.description }</p>
+                        <p>{product.description}</p>
 
                         <div className='col-12 d-flex productShopPrice flex-column'>
-                            <div className='col-12'> Price : <span>{product.price} EGP</span> <del className='ms-2'>{ (product.price+product.discountPercentage).toFixed(2)}</del> EGP</div>
+                            <div className='col-12'> Price : <span>{product.price} $</span> <del className='ms-2'>{ (product.price+product.discountPercentage).toFixed(2)}</del> $</div>
                         </div>
-                        
                         <div className='col-12 d-flex productShopCategory flex-column'>
                             <div className='col-12'> Category : <span>{product.category}</span></div>
                         </div>

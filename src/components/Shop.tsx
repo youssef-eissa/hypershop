@@ -10,8 +10,8 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ProductsMapping from './ReusableComponents/ProductsMapping';
 
 
-function Shop() {
 
+function Shop() {
     const [skipPagination, setSkipPagination] = useState<number>(0)
     const [showAllProducts, setShowAllProducts] = useState<boolean>(true)
     const [SelectedCategory,setCategory]=useState<string>('')

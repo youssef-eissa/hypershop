@@ -36,7 +36,7 @@ return (
                         +00 111 222 3333</p>
 
                 </div>
-                    <div className='col-3 footerbox p-2 d-flex flex-wrap'>
+                    <div className='col-3 footerbox align-content-start p-2 d-flex flex-wrap'>
                     <h1 className='col-12 mb-4'>Pages</h1>
                     <ul className='col-12 d-flex flex-column'>
                         <Link to='/home' className='col-12 mb-2 position-relative footerLink'>Home <ArrowForwardIosIcon className='icon position-absolute' sx={{ fontSize: 15 }}/> </Link>

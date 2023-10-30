@@ -36,6 +36,7 @@
 .productBoxSlider{
     box-shadow: 1px 1px 5px 1px #000;
     transition: 0.3s;
+    color: black;
 }
 .productBoxSlider:hover{
     box-shadow: none;
@@ -162,4 +163,7 @@
 }
 .marqueeBox{
     background-color: white;
+}
+.productBoxHomePage{
+    text-decoration: none;
 }

@@ -34,6 +34,8 @@ import { useMutation } from '@tanstack/react-query';
 import { useState } from 'react';
 import Marquee from "react-fast-marquee";
 import { Button } from './ReusableComponents/Button.style';
+import { setProduct } from '../redux/product';
+import { useDispatch } from 'react-redux';
 
 
 interface IUpdateCart {
@@ -43,7 +45,8 @@ interface IUpdateCart {
 type THome = {
     user: OneUser;
 }
-function Home({  user }: THome) {
+function Home({ user }: THome) {
+    const dispatch=useDispatch()
     const [theUpdatedUser, setTheUpdatedUser] = useState<OneUser>(user)
     function UpdateUser(arg: IUpdateCart) {
         const { id, UpdatedUser } = arg
@@ -272,7 +275,7 @@ return (
                 </div>
                 <Slider  className='col-10 ' {...ProductsSettings}>
                     {allProducts?.map((product:Product)=>{
-                        return <div className='d-flex justify-content-center p-1'  key={product.id}>
+                        return <Link to={`/shop/${product.id}`} className='d-flex justify-content-center productBoxHomePage p-1' onClick={() => { dispatch(setProduct(product)); window.scrollTo(0, 0)}}  key={product.id}>
                             <div className=' col-10 p-2 d-flex flex-column align-items-center rounded productBoxSlider' >
                                 <div className='col-12 imgBoxSlider position-relative'>
 
@@ -282,9 +285,9 @@ return (
                                     Price: <span className='me-1'>{product.price}</span>$
                                 </div>
                                 <div className='d-flex justify-content-center align-items-center productOffSlider'> <span>{product.discountPercentage}%</span> Off</div>
-                                <Button onClick={() => handleUpdate(product)} className='col-5 mt-3 p-2 rounded'>Add to cart</Button>
+                                <Button className='col-5 mt-3 p-2 rounded'>More Info</Button>
                             </div>
-                        </div>
+                        </Link>
                     })}
                 </Slider>
             </div>

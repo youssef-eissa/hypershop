@@ -9,6 +9,7 @@ import Home from "./components/Home";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import Shop from "./components/Shop";
+import ProductPage from "./components/ProductPage";
 
 
 
@@ -18,10 +19,6 @@ function App() {
   const dispatch=useDispatch()
   const { token, setToken } = useToken()
   const [signup, setSignup] = useLocalStorage<boolean>('signup', false)
-    
-
-  
-  
 
 
   if (!token && !signup) {
@@ -40,8 +37,10 @@ function App() {
       <>
         <NavBar setSignup={setSignup as (e:boolean) => boolean}  />
         <Routes>
-              <Route path="/" element={<Home user={user as OneUser}  />} />
-        <Route path="/shop" element={ <Shop/>} />
+
+          <Route  path="/shop" element={<Shop />} />
+        <Route path="/" element={<Home user={user as OneUser}  />} />
+          <Route path="/shop/:id" element={<ProductPage user={ user as OneUser} /> } />
         </Routes>
             <Footer/>
           </>

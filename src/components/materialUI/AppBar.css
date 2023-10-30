@@ -10,6 +10,16 @@
         font-size: 15px;
         display: inline-block;
 }
+.toSection {
+    text-decoration: none;
+    color: white;
+    font-family: 'Playpen Sans', cursive;
+    transition: 0.3s;
+}
+
+.toSection:hover {
+    color: #F99417 !important;
+}
 
 
 

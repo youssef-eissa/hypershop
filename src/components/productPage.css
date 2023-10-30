@@ -1,0 +1,14 @@
+.imgBoxProductPage{
+    height: 300px;
+}
+.productInfo {
+    font-family: 'Poppins', cursive;
+    font-size: 20px;
+}
+.productInfo span{
+    font-family: 'Playpen Sans', cursive;
+    color: crimson;
+}
+.productInfo del {
+    background-color: yellow;
+}

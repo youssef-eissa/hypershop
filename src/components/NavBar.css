@@ -5,12 +5,3 @@
     z-index: 2900;
 }
 
-.toSection{
-    text-decoration: none;
-    color: white;
-    font-family: 'Playpen Sans', cursive;
-    transition: 0.3s;
-}
-.toSection:hover{
-    color: #F99417;
-}

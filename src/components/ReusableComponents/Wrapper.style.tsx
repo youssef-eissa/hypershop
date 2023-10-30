@@ -8,6 +8,7 @@ padding:0;
     font-family: 'Poppins', sans-serif;
     font-weight: 900;
     font-size:50px;
+    text-align:center;
 }
 & span{
 color:white;

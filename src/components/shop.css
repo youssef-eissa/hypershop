@@ -29,5 +29,6 @@ height: 300px;
     transition: 0.3s;
 }
 .slider button:hover{
-    background-color: #F99417;
+    background-color: #F99417 !important;
+    color: white !important;
 }
