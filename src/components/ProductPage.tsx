@@ -3,9 +3,11 @@ import { Wrapper } from "./ReusableComponents/Wrapper.style"
 import './productPage.css'
 import { Button } from "./ReusableComponents/Button.style"
 import axios from "axios"
-import { useMutation,useQueryClient ,QueryFilters} from "@tanstack/react-query"
+import { useMutation} from "@tanstack/react-query"
 import { OneUser ,Product} from "../types/app"
 import { setUser } from "../redux/user";
+import { ToastContainer, toast } from 'react-toastify';
+
 
 
 
@@ -15,7 +17,6 @@ type IProductPage = {
     refetch: () => void
 }
 function ProductPage({ user, isSuccess, refetch }: IProductPage) {
-    const queryClient = useQueryClient()
 
 const dispatch=useDispatch()
     const product = useSelector<{ product: { product: Product } }>((state) => state.product.product) as Product
@@ -28,15 +29,13 @@ const dispatch=useDispatch()
         mutationKey: ['UpdateUserCart'],
         mutationFn: UpdateUserCart,
         onSuccess: (data) => {
-        queryClient.setQueriesData(['removeProduct'] as QueryFilters, data)
-
-
+            refetch()
+            toast.success("product added")
         }
     })
     function handleUpdate(id: number) {
         dispatch(setUser(user))
         mutate(id)
-        window.scrollTo(0, 0)
     }
 
 
@@ -67,6 +66,19 @@ return (
                         </div>
                     })}
                 </div>
+                <ToastContainer
+                    position="top-center"
+                    autoClose={1000}
+                    hideProgressBar
+                    newestOnTop={true}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    theme="dark"
+
+                />
                 <Button onClick={() => { isSuccess && handleUpdate(user.id)}} className="col-3 mt-3 rounded p-3">Add to cart</Button>
             </div>
         </div>

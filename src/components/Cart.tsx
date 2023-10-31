@@ -4,8 +4,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import axios from "axios";
-import { useQueryClient, useMutation ,QueryFilters} from "@tanstack/react-query";
-
+import {  useMutation } from "@tanstack/react-query";
+import { ToastContainer, toast } from 'react-toastify';
 import { ThreeCircles } from 'react-loader-spinner'
 
 
@@ -22,28 +22,29 @@ type TCart ={
     refetch: () => void
 }
 function Cart({ user,isFetching,isSuccess,refetch }: TCart) {
-    const queryClient = useQueryClient()
 
     function removeProduct(arg: IUpdateCart) {
         const {id,productRemoved}=arg
-        return axios.put(`http://localhost:3001/users/${id}`,{...user,carts:isSuccess&&[...user.carts.filter((product:Product) => product.id !== productRemoved.id)]})
+        return axios.put(`http://localhost:3001/users/${id}`,{...user,carts:[...user.carts.filter((product:Product) => product.id !== productRemoved.id)]})
     }
-const { mutate} = useMutation({
-    mutationKey: ['removeProduct'],
+const { mutate,isPending} = useMutation({
     mutationFn: removeProduct,
 
     onSuccess: (data) => {
-        queryClient.setQueriesData(['removeProduct'] as QueryFilters, data)
-        
+        refetch()
+        toast.success("product removed")
     }
 })
- 
-    
+
     function handleProductDeletion(id: number, product: Product) {
         mutate({ id, productRemoved: product })
-        
+
     }
-   
+    if(isPending){
+        return <div className="col-12 position-absolute z-3 min-vh-100 d-flex justify-content-center align-items-center"><ThreeCircles innerCircleColor='#F28123' middleCircleColor='yellow' /></div>
+    }
+    
+
 return (
     <div className="container-fluid">
         <div className="row">
@@ -55,7 +56,7 @@ return (
         <div className="row d-flex justify-content-center">
             <div className="col-11 py-2 d-flex justify-content-center">
                 <div className="col-6 d-flex flex-column row-gap-2 CartsBox">
-                    {isSuccess?user?.carts.map((product: Product) => {
+                    { isSuccess ? user?.carts.map((product: Product) => {
                         return <div key={product.id} className={ `col-12 d-flex align-items-center ${isSuccess ? `justify-content-around`:isFetching ?'justify-content-center':''}`}>
                             <div className="col-3 rounded d-flex  overflow-hidden">
                                 <img alt="productImg" className="img-fluid h-100 w-100" src={product.thumbnail} />
@@ -73,8 +74,20 @@ return (
                                 </Tooltip>
                             </div>
                         </div>
-                    }):isFetching?<div className="col-12 d-flex justify-content-center"><ThreeCircles  innerCircleColor='#F28123' middleCircleColor='yellow' /></div>:''}
-
+                    }) : isFetching ? <div className="col-12 d-flex justify-content-center"><ThreeCircles innerCircleColor='#F28123' middleCircleColor='yellow' />
+                    </div> :null}
+                    <ToastContainer
+                    position="top-center"
+                    autoClose={2000}
+                    hideProgressBar
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    theme="light"
+                        />
                 </div>
 
             </div>

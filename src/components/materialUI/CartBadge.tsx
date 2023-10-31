@@ -19,7 +19,7 @@ export default function CustomizedBadges({user, isSuccess}: ICardBadge) {
 
 return (
     <IconButton aria-label="cart">
-    <StyledBadge badgeContent={isSuccess&&user.carts.length} color="primary">
+    <StyledBadge badgeContent={user?.carts.length} color="primary">
         <ShoppingCartIcon fontSize='large' sx={{ color: 'white', ":hover": { color: "#F99417" },transition: '0.3s' }} />
     </StyledBadge>
     </IconButton>

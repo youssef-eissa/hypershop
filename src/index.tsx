@@ -15,6 +15,8 @@ import { PersistGate } from 'redux-persist/integration/react';
 import storage from 'redux-persist/lib/storage';
 import { userSlicer } from './redux/user';
 import { productReducer } from './redux/product';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 const client = new QueryClient();
