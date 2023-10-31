@@ -14,6 +14,8 @@ import Cart from "./components/Cart";
 import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
 import About from "./components/About";
+import Contact from "./components/Contact";
+
 
 
 
@@ -50,6 +52,7 @@ function App() {
         <NavBar user={theUser as OneUser} isSuccess={isSuccess} setSignup={setSignup as (e:boolean) => boolean}  />
         <Routes>
           <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
           <Route  path="/shop" element={<Shop />} />
         <Route path="/" element={<Home />} />
           <Route path="/shop/:id" element={<ProductPage isSuccess={isSuccess} user={theUser as OneUser} refetch={refetch} />} />

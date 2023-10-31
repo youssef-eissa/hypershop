@@ -1,0 +1,35 @@
+.contactBoxPage h1{
+    font-family: 'Poppins', cursive;
+    font-weight:500 ;
+}
+.contactBoxPage span{
+    color: #555;
+    font-size: 20px;
+    font-family: 'Poppins', cursive;
+}
+.contactBoxPage form input[type='text'],
+.contactBoxPage form input[type='email'],
+.contactBoxPage form input[type='tel']{
+    border: none;
+    border-bottom: 1px solid #555;
+    background-color: white;
+    font-size: 20px;
+}
+.contactBoxPage form input[type='text']:focus,
+.contactBoxPage form input[type='email']:focus {
+    outline: none;
+}
+.contactBoxPage textarea{
+    border: none;
+    border-bottom: 1px solid #555;
+    background-color: white;
+    font-size: 20px;
+    min-height: 100px;
+    resize: none;
+}
+.contactBoxPage textarea:focus{
+    outline: none;
+}
+.rightBoxContactPage span{
+font-size: 16px;
+}
