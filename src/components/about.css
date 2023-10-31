@@ -1,0 +1,17 @@
+.whyShop h1 span{
+    font-family: 'Pacifico', cursive;
+    color: #F99417;
+    font-weight: 100;
+}
+.whyShop h1{
+    font-family: 'Poppins', cursive;
+    font-weight: 800;
+}
+.whyShop p{
+    color: #051922;
+}
+.whyShop .icon{
+    width: 70px;
+    height: 70px;
+    border: 50%;
+}

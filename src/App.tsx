@@ -13,6 +13,7 @@ import ProductPage from "./components/ProductPage";
 import Cart from "./components/Cart";
 import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
+import About from "./components/About";
 
 
 
@@ -23,14 +24,12 @@ function App() {
   const { token, setToken } = useToken()
   const [signup, setSignup] = useLocalStorage<boolean>('signup', false)
   function getUser() {
-        
         return axios.get('http://localhost:3001/users')
     }
     const {data:theUser,isSuccess,refetch,isFetching}=useQuery({
         queryKey: ['users'],
         queryFn: getUser,
       select: (data) => data.data.find((TheUser: OneUser) => TheUser.id === user.id),
-        
     })
 
 
@@ -50,7 +49,7 @@ function App() {
       <>
         <NavBar user={theUser as OneUser} isSuccess={isSuccess} setSignup={setSignup as (e:boolean) => boolean}  />
         <Routes>
-
+          <Route path="/about" element={<About />} />
           <Route  path="/shop" element={<Shop />} />
         <Route path="/" element={<Home />} />
           <Route path="/shop/:id" element={<ProductPage isSuccess={isSuccess} user={theUser as OneUser} refetch={refetch} />} />

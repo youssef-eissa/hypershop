@@ -76,7 +76,7 @@ return (
                     pauseOnFocusLoss
                     draggable
                     pauseOnHover
-                    theme="dark"
+                    theme="light"
 
                 />
                 <Button onClick={() => { isSuccess && handleUpdate(user.id)}} className="col-3 mt-3 rounded p-3">Add to cart</Button>
