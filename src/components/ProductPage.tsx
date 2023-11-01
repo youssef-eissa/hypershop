@@ -36,6 +36,7 @@ const dispatch=useDispatch()
     function handleUpdate(id: number) {
         dispatch(setUser(user))
         mutate(id)
+        window.scrollTo(0, 0)
     }
 
 

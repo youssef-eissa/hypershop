@@ -1,0 +1,45 @@
+.emptyCart {
+    min-height: 500px;
+   
+}
+.emptyCart div{
+color: #555;
+    font-size: 50px;
+    font-family: 'Playpen Sans', cursive;
+    text-shadow: 10px 20px 10px  #555;
+}
+.CartTotalBox{
+    background-color: #8080801c;
+}
+.cartBox{
+    min-height: 300px;
+}
+.cartBox h4{
+    position: relative;
+    font-family: 'Poppins', cursive;
+}
+.cartBox h4::before {
+    position: absolute;
+    content: '';
+    width: 10%;
+    height: 3px;
+    background-color: #F99417;
+    left: 0;
+    bottom: -10px;
+}
+.totalBox{
+    font-family: 'Poppins', cursive;
+    font-size: 20px;
+}
+.shipping{
+    position: relative;
+}
+.shipping::before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 3px;
+    background-color: #F99417;
+    left: 0;
+    bottom: -10px;
+}

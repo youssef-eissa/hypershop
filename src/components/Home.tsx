@@ -222,7 +222,7 @@ return (
                     </div>
                     <div className='col-8 d-flex flex-column'>
                         <h3 className='col-12 fw-bold'>Free Shipping</h3>
-                        <span>When order over $75</span>
+                        <span>When order over $750</span>
                     </div>
                 </div>
                 <div className='col-3 d-flex justify-content-between'>

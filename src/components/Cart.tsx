@@ -1,3 +1,5 @@
+import './cart.css'
+import { Button } from './ReusableComponents/Button.style';
 import { Wrapper } from "./ReusableComponents/Wrapper.style"
 import { Product ,OneUser} from "../types/app"
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -7,6 +9,7 @@ import axios from "axios";
 import {  useMutation } from "@tanstack/react-query";
 import { ToastContainer, toast } from 'react-toastify';
 import { ThreeCircles } from 'react-loader-spinner'
+
 
 
 type IUpdateCart = {
@@ -21,7 +24,8 @@ type TCart ={
     isSuccess: boolean;
     refetch: () => void
 }
-function Cart({ user,isFetching,isSuccess,refetch }: TCart) {
+function Cart({ user, isFetching, isSuccess, refetch }: TCart) {
+
 
     function removeProduct(arg: IUpdateCart) {
         const {id,productRemoved}=arg
@@ -43,7 +47,9 @@ const { mutate,isPending} = useMutation({
     if(isPending){
         return <div className="col-12 position-absolute z-3 min-vh-100 d-flex justify-content-center align-items-center"><ThreeCircles innerCircleColor='#F28123' middleCircleColor='yellow' /></div>
     }
-    
+    const TotalPriceArray = user?.carts.map((product: any) => product.price)
+    const total=TotalPriceArray?.reduce((a: number, b: number) => a + b, 0)
+
 
 return (
     <div className="container-fluid">
@@ -53,44 +59,63 @@ return (
                 <h1>Cart</h1>
             </Wrapper>
         </div>
-        <div className="row d-flex justify-content-center">
-            <div className="col-11 py-2 d-flex justify-content-center">
-                <div className="col-6 d-flex flex-column row-gap-2 CartsBox">
-                    { isSuccess ? user?.carts.map((product: Product) => {
-                        return <div key={product.id} className={ `col-12 d-flex align-items-center ${isSuccess ? `justify-content-around`:isFetching ?'justify-content-center':''}`}>
-                            <div className="col-3 rounded d-flex  overflow-hidden">
-                                <img alt="productImg" className="img-fluid h-100 w-100" src={product.thumbnail} />
+        <div  className="row d-flex justify-content-center">
+                <div className="col-11 py-2 d-flex my-3 justify-content-center">
+                {user?.carts.length !== 0 ?
+                    <div className="col-12 d-flex cartBox align-items-start justify-content-around">
+                        <div className="col-6 d-flex flex-column row-gap-2 CartsBox">
+                        {isSuccess ? user?.carts.map((product: Product) => {
+                            return <div key={product.id} className={`col-12 d-flex align-items-center ${isSuccess ? `justify-content-around` : isFetching ? 'justify-content-center' : ''}`}>
+                                <div className="col-3 rounded d-flex  overflow-hidden">
+                                    <img alt="productImg" className="img-fluid h-100 w-100" src={product.thumbnail} />
+                                </div>
+                                <div className="col-7 d-flex flex-column">
+                                    <div className="col-12">{product.title}</div>
+                                    <p className="col-12">{product.description}</p>
+                                    <div className="col-12">{product.price} $</div>
+                                </div>
+                                <div>
+                                    <Tooltip title="Delete">
+                                        <IconButton onClick={() => handleProductDeletion(user.id, product)} >
+                                            <DeleteIcon sx={{ color: 'red', ":hover": { color: "crimson" }, transition: '0.3s' }} />
+                                        </IconButton>
+                                    </Tooltip>
+                                </div>
                             </div>
-                            <div className="col-7 d-flex flex-column">
-                                <div className="col-12">{product.title }</div>
-                                <p className="col-12">{product.description}</p>
-                                <div className="col-12">{ product.price} $</div>
-                            </div>
-                            <div>
-                                <Tooltip title="Delete">
-                                    <IconButton onClick={() => handleProductDeletion(user.id, product)} >
-                                        <DeleteIcon sx={{ color: 'red', ":hover": { color: "crimson" },transition: '0.3s' }} />
-                                    </IconButton>
-                                </Tooltip>
-                            </div>
-                        </div>
-                    }) : isFetching ? <div className="col-12 d-flex justify-content-center"><ThreeCircles innerCircleColor='#F28123' middleCircleColor='yellow' />
-                    </div> :null}
-                    <ToastContainer
-                    position="top-center"
-                    autoClose={2000}
-                    hideProgressBar
-                    newestOnTop={false}
-                    closeOnClick
-                    rtl={false}
-                    pauseOnFocusLoss
-                    draggable
-                    pauseOnHover
-                    theme="light"
+                        }) : isFetching ? <div className="col-12 d-flex justify-content-center"><ThreeCircles innerCircleColor='#F28123' middleCircleColor='yellow' />
+                        </div> : null}
+                        <ToastContainer
+                            position="top-center"
+                            autoClose={2000}
+                            hideProgressBar
+                            newestOnTop={false}
+                            closeOnClick
+                            rtl={false}
+                            pauseOnFocusLoss
+                            draggable
+                            pauseOnHover
+                            theme="light"
                         />
                 </div>
+                    <div className="col-4 d-flex p-2 rounded flex-column row-gap-2 CartTotalBox">
+                        <h4 className="col-12">Summary</h4>
+                            <div className="col-12 d-flex align-items-center totalBox flex-column">
+                                <div className="col-10 mb-3">Subtotal: {total} $</div>
 
-            </div>
+                                {total <= 750 ? <div className="col-10 mb-3 shipping">Shipping : 45$</div> : <div className="col-10 mb-3 shipping">Shipping : 0 $</div>}
+
+                                {total <= 750 ? <div className="col-10 ">Total: {total + 45} $</div> : <div className="col-10 ">Total: {total} $</div>}
+                                <Button onClick={() => toast.success("Order Placed", {
+                                    position: "bottom-center",
+                                })} className='col-10 mt-3 p-2 rounded'>Checkout</Button>
+                        </div>
+                </div>
+                    </div>
+                    :
+                    <div className="col-12 d-flex justify-content-center align-items-center emptyCart ">
+                    <div >No Selected Items...</div>
+                    </div>}
+                </div>
         </div>
     </div>
 )
