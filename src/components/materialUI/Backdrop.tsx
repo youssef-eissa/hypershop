@@ -10,6 +10,7 @@ import { useMutation } from '@tanstack/react-query';
 import './backdrop.css'
 import { setUser } from '../../redux/user';
 import { CircularProgress } from '@mui/material';
+import { ToastContainer, toast } from 'react-toastify';
 
 
 
@@ -54,7 +55,7 @@ const handleOpen = () => {
             handleClose()
             refetch()
             dispatch(setUser(data.data))
-
+            toast.success("profile updated")
         }
     })
 
@@ -141,7 +142,19 @@ return (
                 />
                 </div>
                 {errors.confirmPassword && touched.confirmPassword ? <p className='text-danger'>{errors.confirmPassword}</p> : null}
-                <Button disabled={!isValid} type='submit' className='col-2 rounded d-flex justify-content-center p-1 '>Submit { isPending ? <div className=' col-4 d-flex align-items-center justify-content-center'><CircularProgress color="inherit" size={20} /></div> : null}</Button>
+                <Button disabled={!isValid} type='submit' className='col-2 rounded d-flex justify-content-center p-1 '>Submit {isPending ? <div className=' col-4 d-flex align-items-center justify-content-center'><CircularProgress color="inherit" size={20} /></div> : null}</Button>
+                <ToastContainer
+                    position="top-center"
+                    autoClose={1000}
+                    hideProgressBar
+                    newestOnTop={true}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    theme="light"
+                />
             </form>
         </Backdrop>
     </div>

@@ -164,10 +164,10 @@ return (
             open={Boolean(anchorElUser)}
             onClose={handleCloseUserMenu}
                     >
-                        <div style={{ width: '200px' }} className='d-flex flex-column align-items-center settingBox'>
-                            <Link reloadDocument onClick={()=>dispatch(setUser(user as OneUser))} className='col-10 mb-3 p-1 rounded text-center toProfile' to={`/profile/${user?.id}`}>Profile</Link>
+                    <div style={{ width: '200px' }} className='d-flex flex-column align-items-center settingBox'>
+                    <Link reloadDocument onClick={()=>dispatch(setUser(user as OneUser))} className='col-10 mb-3 p-1 rounded text-center toProfile' to={`/profile/${user?.id}`}>Profile</Link>
                 <Button onClick={handlelogout} className='col-10 rounded'>logout</Button>
-                        </div>
+                </div>
             </Menu>
         </Box>
         </Toolbar>
