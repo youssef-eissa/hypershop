@@ -1,0 +1,10 @@
+.profileBox h1{
+    font-family: 'Poppins', cursive;
+}
+.profileBox p{
+    font-family: 'Poppins', cursive;
+    font-size: 20px;
+}
+.profileBox span{
+    color: crimson;
+}

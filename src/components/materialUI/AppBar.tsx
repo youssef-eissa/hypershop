@@ -20,7 +20,8 @@ import { useNavigate } from 'react-router-dom';
 import { resetUser } from '../../redux/user';
 import { useLocation } from 'react-router-dom';
 import CustomizedBadges from './CartBadge';
-
+import { Button } from '../ReusableComponents/Button.style';
+import { setUser } from '../../redux/user';
 const pages = ['Product', 'Pricing', 'Blog'];
 type TResponsiveAppBar = {
     setSignup: (e: boolean) => boolean;
@@ -162,8 +163,11 @@ return (
             }}
             open={Boolean(anchorElUser)}
             onClose={handleCloseUserMenu}
-            >
-            <button onClick={handlelogout} className=''>logout</button>
+                    >
+                        <div style={{ width: '200px' }} className='d-flex flex-column align-items-center settingBox'>
+                            <Link reloadDocument onClick={()=>dispatch(setUser(user as OneUser))} className='col-10 mb-3 p-1 rounded text-center toProfile' to={`/profile/${user?.id}`}>Profile</Link>
+                <Button onClick={handlelogout} className='col-10 rounded'>logout</Button>
+                        </div>
             </Menu>
         </Box>
         </Toolbar>

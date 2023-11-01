@@ -20,6 +20,16 @@
 .toSection:hover {
     color: #F99417 !important;
 }
+.toProfile{
+    text-decoration: none;
+    color: black;
+    font-family: 'Playpen Sans', cursive;
+    transition: 0.3s;
+}
+.toProfile:hover{
+    color: white !important;
+    background-color: #F99417;
+}
 
 
 

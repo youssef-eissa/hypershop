@@ -15,6 +15,7 @@ import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
 import About from "./components/About";
 import Contact from "./components/Contact";
+import Profile from "./components/Profile";
 
 
 
@@ -56,7 +57,8 @@ function App() {
           <Route  path="/shop" element={<Shop />} />
         <Route path="/" element={<Home />} />
           <Route path="/shop/:id" element={<ProductPage isSuccess={isSuccess} user={theUser as OneUser} refetch={refetch} />} />
-          <Route path="/cart" element={<Cart refetch={ refetch} isFetching={isFetching} isSuccess={isSuccess} user={theUser as OneUser}/> } />
+          <Route path="/cart" element={<Cart refetch={refetch} isFetching={isFetching} isSuccess={isSuccess} user={theUser as OneUser} />} />
+          <Route path="/profile/:id" element={<Profile user={user } refetch={refetch} /> } />
         </Routes>
             <Footer/>
           </>
