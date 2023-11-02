@@ -33,3 +33,15 @@
 
 
 
+@media  (max-width: 768px) {
+    .logo div {
+            font-family: 'Pacifico', cursive !important;
+            font-size: 15px;
+        }
+    
+        .logo span {
+            font-family: 'Playpen Sans', cursive;
+            font-size: 10px;
+            display: inline-block;
+        }
+}

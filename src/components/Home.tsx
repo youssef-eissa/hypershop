@@ -45,7 +45,9 @@ function Home() {
     const settings = {
     fade: true,
     dots: false,
-    speed: 1000,
+        speed: 1000,
+    autoplay: true,
+    autoplaySpeed: 3000,
     arrows: false,
     infinite: true,
     touchMove: true,
@@ -74,6 +76,14 @@ function Home() {
     initialSlide: 1,
         settings: {
         slidesToShow: 3,
+        slidesToScroll: 1,
+    }
+    },
+    {
+    breakpoint: 800,
+    initialSlide: 1,
+        settings: {
+        slidesToShow: 1,
         slidesToScroll: 1,
     }
     }]
@@ -110,113 +120,113 @@ function Home() {
 
 return (
     <div className='container-fluid'>
-        <div className='row d-flex justify-content-center slider&props '>
-            <div className='col-12 d-flex justify-content-center p-0 '>
+        <div className='row d-flex justify-content-center sliderAndProps '>
+            <div className='col-12  d-flex justify-content-center p-0 '>
                 <Slider  className='col-12 ' {...settings}>
-                    <div className='vh-100 position-relative'>
-                        <div className='col-12 position-absolute overlayImgSlider'></div>
+                    <div  className='imgSliderBox position-relative'>
+                        <div className='col-12  position-absolute overlayImgSlider'></div>
                         <img className='img-fluid w-100 h-100' alt='smartphones' src={smartPhones} />
-                        <Link className='ShopNowLink col-2 rounded p-3 text-center position-absolute z-2 ' to='/products/'>Shop Now</Link>
+                        <Link reloadDocument className='ShopNowLink col-md-2 col-6 rounded p-3 text-center position-absolute z-2 ' to='/shop'>Shop Now</Link>
                     </div>
-                    <div className='vh-100 position-relative'>
+                    <div className='imgSliderBox position-relative'>
                         <div className='col-12 position-absolute overlayImgSlider'></div>
                         <img className='img-fluid h-100 w-100' alt='laptops' src={laptops} />
-                        <Link className='ShopNowLink col-2 rounded p-3 text-center position-absolute z-2 ' to='/products/'>Shop Now</Link>
+                        <Link reloadDocument className='ShopNowLink col-md-2 col-6 rounded p-3 text-center position-absolute z-2 ' to='/shop'>Shop Now</Link>
                     </div>
-                    <div className='vh-100 position-relative'>
+                    <div className='imgSliderBox position-relative'>
                         <div className='col-12 position-absolute overlayImgSlider'></div>
                         <img className='img-fluid h-100 w-100' alt='fragrances' src={fragrances} />
-                        <Link className='ShopNowLink col-2 rounded p-3 text-center position-absolute z-2 ' to='/products/'>Shop Now</Link>
+                        <Link reloadDocument className='ShopNowLink col-md-2 col-6 rounded p-3 text-center position-absolute z-2 ' to='/shop'>Shop Now</Link>
                     </div>
-                    <div className='vh-100 position-relative'>
+                    <div className='imgSliderBox position-relative'>
                         <div className='col-12 position-absolute overlayImgSlider'></div>
                         <img className='img-fluid h-100 w-100' alt='skincares' src={skincares} />
-                        <Link className='ShopNowLink col-2 rounded p-3 text-center position-absolute z-2 ' to='/products/'>Shop Now</Link>
+                        <Link reloadDocument className='ShopNowLink col-md-2 col-6 rounded p-3 text-center position-absolute z-2 ' to='/shop'>Shop Now</Link>
                     </div>
-                    <div className='vh-100 position-relative'>
+                    <div className='imgSliderBox position-relative'>
                         <div className='col-12 position-absolute overlayImgSlider'></div>
                         <img className='img-fluid h-100 w-100' alt='groceries' src={groceries} />
-                        <Link className='ShopNowLink col-2 rounded p-3 text-center position-absolute z-2 ' to='/products/'>Shop Now</Link>
+                        <Link reloadDocument className='ShopNowLink col-md-2 col-6 rounded p-3 text-center position-absolute z-2 ' to='/shop'>Shop Now</Link>
                     </div>
-                    <div className='vh-100 position-relative'>
+                    <div className='imgSliderBox position-relative'>
                         <div className='col-12 position-absolute overlayImgSlider'></div>
                         <img className='img-fluid h-100 w-100' alt='homedecorations' src={homedecorations} />
-                        <Link className='ShopNowLink col-2 rounded p-3 text-center position-absolute z-2 ' to='/products/'>Shop Now</Link>
+                        <Link reloadDocument className='ShopNowLink col-md-2 col-6 rounded p-3 text-center position-absolute z-2 ' to='/shop'>Shop Now</Link>
                     </div>
-                    <div className='vh-100 position-relative'>
+                    <div className='imgSliderBox position-relative'>
                         <div className='col-12 position-absolute overlayImgSlider'></div>
                         <img className='img-fluid h-100 w-100' alt='furniture' src={furniture} />
-                        <Link className='ShopNowLink col-2 rounded p-3 text-center position-absolute z-2 ' to='/products/'>Shop Now</Link>
+                        <Link reloadDocument className='ShopNowLink col-md-2 col-6 rounded p-3 text-center position-absolute z-2 ' to='/shop'>Shop Now</Link>
                     </div>
-                    <div className='vh-100 position-relative'>
+                    <div className='imgSliderBox position-relative'>
                         <div className='col-12 position-absolute overlayImgSlider'></div>
                         <img className='img-fluid h-100 w-100' alt='tops' src={tops} />
-                        <Link className='ShopNowLink col-2 rounded p-3 text-center position-absolute z-2 ' to='/products/'>Shop Now</Link>
+                        <Link className='ShopNowLink col-md-2 col-6 rounded p-3 text-center position-absolute z-2 ' to='/shop'>Shop Now</Link>
                     </div>
-                    <div className='vh-100 position-relative'>
+                    <div className='imgSliderBox position-relative'>
                         <div className='col-12 position-absolute overlayImgSlider'></div>
                         <img className='img-fluid h-100 w-100' alt='womenDresses' src={womenDresses} />
-                        <Link className='ShopNowLink col-2 rounded p-3 text-center position-absolute z-2 ' to='/products/'>Shop Now</Link>
+                        <Link reloadDocument className='ShopNowLink col-md-2 col-6 rounded p-3 text-center position-absolute z-2 ' to='/shop'>Shop Now</Link>
                     </div>
-                    <div className='vh-100 position-relative'>
+                    <div className='imgSliderBox position-relative'>
                         <div className='col-12 position-absolute overlayImgSlider'></div>
                         <img className='img-fluid h-100 w-100' alt='womenShoes' src={womenShoes} />
-                        <Link className='ShopNowLink col-2 rounded p-3 text-center position-absolute z-2 ' to='/products/'>Shop Now</Link>
+                        <Link reloadDocument className='ShopNowLink col-md-2 col-6 rounded p-3 text-center position-absolute z-2 ' to='/shop'>Shop Now</Link>
                     </div>
-                    <div className='vh-100 position-relative'>
+                    <div className='imgSliderBox position-relative'>
                         <div className='col-12 position-absolute overlayImgSlider'></div>
                         <img className='img-fluid h-100 w-100' alt='menShirts' src={menShirts} />
-                        <Link className='ShopNowLink col-2 rounded p-3 text-center position-absolute z-2 ' to='/products/'>Shop Now</Link>
+                        <Link reloadDocument className='ShopNowLink col-md-2 col-6 rounded p-3 text-center position-absolute z-2 ' to='/shop'>Shop Now</Link>
                     </div>
-                    <div className='vh-100 position-relative'>
+                    <div className='imgSliderBox position-relative'>
                         <div className='col-12 position-absolute overlayImgSlider'></div>
                         <img className='img-fluid h-100 w-100' alt='menShoes' src={menShoes} />
-                        <Link className='ShopNowLink col-2 rounded p-3 text-center position-absolute z-2 ' to='/products/'>Shop Now</Link>
+                        <Link reloadDocument className='ShopNowLink col-md-2 col-6 rounded p-3 text-center position-absolute z-2 ' to='/shop'>Shop Now</Link>
                     </div>
-                    <div className='vh-100 position-relative'>
+                    <div className='imgSliderBox position-relative'>
                         <div className='col-12 position-absolute overlayImgSlider'></div>
                         <img className='img-fluid h-100 w-100' alt='menwatches' src={menwatches} />
-                        <Link className='ShopNowLink col-2 rounded p-3 text-center position-absolute z-2 ' to='/products/'>Shop Now</Link>
+                        <Link reloadDocument className='ShopNowLink col-md-2 col-6 rounded p-3 text-center position-absolute z-2 ' to='/shop'>Shop Now</Link>
                     </div>
-                    <div className='vh-100 position-relative'>
+                    <div className='imgSliderBox position-relative'>
                         <div className='col-12 position-absolute overlayImgSlider'></div>
                         <img className='img-fluid h-100 w-100' alt='Womenwatches' src={Womenwatches} />
-                        <Link className='ShopNowLink col-2 rounded p-3 text-center position-absolute z-2 ' to='/products/'>Shop Now</Link>
+                        <Link reloadDocument className='ShopNowLink col-md-2 col-6 rounded p-3 text-center position-absolute z-2 ' to='/shop'>Shop Now</Link>
                     </div>
-                    <div className='vh-100 position-relative'>
+                    <div className='imgSliderBox position-relative'>
                         <div className='col-12 position-absolute overlayImgSlider'></div>
                         <img className='img-fluid h-100 w-100' alt='WomenBags' src={WomenBags} />
-                        <Link className='ShopNowLink col-2 rounded p-3 text-center position-absolute z-2 ' to='/products/'>Shop Now</Link>
+                        <Link className='ShopNowLink col-md-2 col-6 rounded p-3 text-center position-absolute z-2 ' to='/shop'>Shop Now</Link>
                     </div>
-                    <div className='vh-100 position-relative'>
+                    <div className='imgSliderBox position-relative'>
                         <div className='col-12 position-absolute overlayImgSlider'></div>
                         <img className='img-fluid h-100 w-100' alt='WomenJewellery' src={WomenJewellery} />
-                        <Link className='ShopNowLink col-2 rounded p-3 text-center position-absolute z-2 ' to='/products/'>Shop Now</Link>
+                        <Link reloadDocument className='ShopNowLink col-md-2 col-6 rounded p-3 text-center position-absolute z-2 ' to='/shop'>Shop Now</Link>
                     </div>
-                    <div className='vh-100 position-relative'>
+                    <div className='imgSliderBox position-relative'>
                         <div className='col-12 position-absolute overlayImgSlider'></div>
                         <img className='img-fluid h-100 w-100' alt='SunGlasses' src={SunGlasses} />
-                        <Link className='ShopNowLink col-2 rounded p-3 text-center position-absolute z-2 ' to='/products/'>Shop Now</Link>
+                        <Link reloadDocument className='ShopNowLink col-md-2 col-6 rounded p-3 text-center position-absolute z-2 ' to='/shop'>Shop Now</Link>
                     </div>
-                    <div className='vh-100 position-relative'>
+                    <div className='imgSliderBox position-relative'>
                         <div className='col-12 position-absolute overlayImgSlider'></div>
                         <img className='img-fluid h-100 w-100' alt='automotive' src={automotive} />
-                        <Link className='ShopNowLink col-2 rounded p-3 text-center position-absolute z-2 ' to='/products/'>Shop Now</Link>
+                        <Link reloadDocument className='ShopNowLink col-md-2 col-6 rounded p-3 text-center position-absolute z-2 ' to='/shop'>Shop Now</Link>
                     </div>
-                    <div className='vh-100 position-relative'>
+                    <div className='imgSliderBox position-relative'>
                         <div className='col-12 position-absolute overlayImgSlider'></div>
                         <img className='img-fluid h-100 w-100' alt='motorcycle' src={motorcycle} />
-                        <Link className='ShopNowLink col-2 rounded p-3 text-center position-absolute z-2 ' to='/products/'>Shop Now</Link>
+                        <Link reloadDocument className='ShopNowLink col-md-2 col-6 rounded p-3 text-center position-absolute z-2 ' to='/shop'>Shop Now</Link>
                     </div>
-                    <div className='vh-100 position-relative'>
+                    <div className='imgSliderBox position-relative'>
                         <div className='col-12 position-absolute overlayImgSlider'></div>
                         <img className='img-fluid h-100 w-100' alt='lightening' src={lightening} />
-                        <Link className='ShopNowLink col-2 rounded p-3 text-center position-absolute z-2 ' to='/products/'>Shop Now</Link>
+                        <Link reloadDocument className='ShopNowLink col-md-2 col-6 rounded p-3 text-center position-absolute z-2 ' to='/shop'>Shop Now</Link>
                     </div>
                 </Slider>
             </div>
-            <div  className='col-10 p-5 props d-flex justify-content-between'>
-                <div className='col-3 d-flex justify-content-between'>
+            <div  className='col-10 p-md-5 p-3 props d-flex flex-column flex-md-row justify-content-between'>
+                <div className='col-md-3 col-12 d-flex justify-content-between'>
                     <div className='col-3 icon d-flex justify-content-center align-items-center'>
                         <LocalShippingOutlinedIcon  sx={{width: '60px', height: '60px',color: '#F99417'}}  />
                     </div>
@@ -225,7 +235,7 @@ return (
                         <span>When order over $750</span>
                     </div>
                 </div>
-                <div className='col-3 d-flex justify-content-between'>
+                <div className='col-md-3 col-12 my-3 my-md-0 d-flex justify-content-between'>
                     <div className='col-3 icon d-flex justify-content-center align-items-center'>
                         <PhoneInTalkOutlinedIcon  sx={{width: '50px', height: '50px',color: '#F99417'}}  />
                     </div>
@@ -234,7 +244,7 @@ return (
                         <span>Get support all day</span>
                     </div>
                 </div>
-                <div className='col-3 d-flex justify-content-between'>
+                <div className='col-md-3 col-12 d-flex justify-content-between'>
                     <div className='col-3 icon d-flex justify-content-center align-items-center'>
                         <CachedOutlinedIcon  sx={{width: '50px', height: '50px',color: '#F99417'}}  />
                     </div>
@@ -245,11 +255,11 @@ return (
                 </div>
             </div>
         </div>
-        <div className='row products p-5'>
+        <div className='row products p-md-5 p-3'>
             <div className='col-12 d-flex  flex-column align-items-center justify-content-center p-0'>
                 <div className='col-12 productsTitleHomePage d-flex flex-column align-items-center'>
-                    <div className='col-4 text-center'><span>Our</span> Products</div>
-                    <div className='col-4 text-center my-3'>Check all of our products</div>
+                    <div className='col-md-4 col-12 text-center'><span>Our</span> Products</div>
+                    <div className='col-md-4 col-12 text-center my-3'>Check all of our products</div>
                 </div>
                 <Slider  className='col-10 ' {...ProductsSettings}>
                     {allProducts?.map((product:Product)=>{
@@ -270,9 +280,9 @@ return (
                 </Slider>
             </div>
         </div>
-        <div className='row testimonials p-5'>
+        <div className='row testimonials p-md-5 p-3'>
             <div className='col-12 d-flex justify-content-center p-0'>
-                <div style={{backgroundColor:'white'}} className='rounded col-8 p-3'>
+                <div style={{backgroundColor:'white'}} className='rounded col-md-8 col-12 p-3'>
                     <Slider   className='col-12' {...TestimonialsSettings}>
                     <div className='col-12 d-flex flex-column align-items-center justify-content-center'>
                         <div className='testName d-flex justify-content-center align-items-center'>Alexis</div>
@@ -293,18 +303,18 @@ return (
                 </div>
             </div>
         </div>
-        <div className='row aboutHome p-5'>
+        <div className='row aboutHome p-md-5 p-3'>
             <div className='col-12 p-0 d-flex justify-content-center'>
-                <div className='col-10 d-flex justify-content-between '>
-                    <div className='homeAboutPage col-5 rounded overflow-hidden'>
+                <div className='col-10 d-flex flex-column flex-md-row justify-content-between '>
+                    <div className='homeAboutPage col-md-5 col-12 rounded overflow-hidden'>
                         <img alt='aboutpage' src={about} className='img-fluid h-100 w-100'/>
                     </div>
-                    <div className='col-6 aboutBox d-flex flex-column'>
+                    <div className='col-md-6 col-12 aboutBox d-flex flex-column'>
                         <span className='col-12'>Since Year 1999</span>
                         <h3>We are <span>HyperShop</span></h3>
                         <p className='col-12 mt-3'>Etiam vulputate ut augue vel sodales. In sollicitudin neque et massa porttitor vestibulum ac vel nisi. Vestibulum placerat eget dolor sit amet posuere. In ut dolor aliquet, aliquet sapien sed, interdum velit. Nam eu molestie lorem. <br></br>  <br></br>
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente facilis illo repellat veritatis minus, et labore minima mollitia qui ducimus.</p>
-                        <Link className='col-3 toabout text-center p-2 rounded ' to='/about'>Know more</Link>
+                        <Link reloadDocument className='col-md-3 col-6 toabout text-center p-2 rounded ' to='/about'>Know more</Link>
 
                     </div>
                 </div>

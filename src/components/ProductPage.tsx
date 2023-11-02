@@ -49,10 +49,10 @@ return (
         </div>
         <div className="row productPage d-flex justify-content-center py-3">
             <div className="col-10 d-flex flex-column align-items-center p-0">
-                <div className="col-5 imgBoxProductPage rounded overflow-hidden ">
+                <div className="col-md-5 col-11 imgBoxProductPage rounded overflow-hidden ">
                     <img alt="imgProduct" className="img-fluid h-100 w-100" src={product.thumbnail} />
                 </div>
-                <div className="col-6 productInfo d-flex mt-3 flex-column">
+                <div className="col-md-6 col-12 productInfo d-flex mt-3 flex-column">
                     <p className="col-12">Description : <span>{product.description}</span></p>
                     <div className="col-12">Price : <span>{product.price} $</span> <del>{product.price + product
                     .discountPercentage}</del></div>
@@ -60,7 +60,7 @@ return (
                     <div className="col-12">Brand : <span>{product.brand}</span></div>
                     <div className="col-12">Rating : <span>{ product.rating}</span></div>
                 </div>
-                <div className="col-6 d-flex flex-wrap gap-3 mt-3 justify-content-center">
+                <div className="col-md-6 col-12 d-flex flex-wrap gap-3 mt-3 justify-content-center">
                     {product.images.map((img: string) => {
                         return <div key={img} className="col-3 rounded overflow-hidden">
                             <img alt="img" src={ img} className="img-fluid h-100" />
@@ -79,7 +79,7 @@ return (
                     pauseOnHover
                     theme="light"
                 />
-                <Button onClick={() => { isSuccess && handleUpdate(user.id)}} className="col-3 mt-3 rounded p-3">Add to cart</Button>
+                <Button onClick={() => { isSuccess && handleUpdate(user.id)}} className="col-md-3 col-6 mt-3 rounded p-3">Add to cart</Button>
             </div>
         </div>
 

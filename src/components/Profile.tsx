@@ -2,6 +2,8 @@ import { Wrapper } from "./ReusableComponents/Wrapper.style"
 import { OneUser } from "../types/app"
 import './profile.css'
 import SimpleBackdrop from "./materialUI/Backdrop"
+import { ToastContainer, toast } from 'react-toastify';
+
 
 type TProfile={
     user: OneUser
@@ -22,7 +24,19 @@ return (
                 <p className="col-12">Name: <span>{user?.name}</span></p>
                 <p className="col-12">Email: <span>{user?.email}</span></p>
                 <p className="col-12">user: <span>{user?.username}</span></p>
-                <div className="col-3 p-2 rounded d-flex mx-auto justify-content-center align-items-center"><SimpleBackdrop refetch={refetch } /></div>
+                <div className="col-md-3 col-6 p-2 rounded d-flex mx-auto justify-content-center align-items-center"><SimpleBackdrop notify={toast.success as (e : string)=>void} refetch={refetch} /></div>
+                    <ToastContainer
+                    position="top-center"
+                    autoClose={2000}
+                    hideProgressBar
+                    newestOnTop={true}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    theme="light"
+                />
 
             </div>
         </div>

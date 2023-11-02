@@ -60,19 +60,19 @@ return (
             </Wrapper>
         </div>
         <div  className="row d-flex justify-content-center">
-                <div className="col-11 py-2 d-flex my-3 justify-content-center">
+                <div className="col-12 col-md-11 p-0 py-md-2 d-flex my-3 justify-content-center">
                 {user?.carts.length !== 0 ?
-                    <div className="col-12 d-flex cartBox align-items-start justify-content-around">
-                        <div className="col-6 d-flex flex-column row-gap-2 CartsBox">
+                    <div className="col-12 d-flex flex-column align-items-center align-items-md-start flex-md-row cartBox  justify-content-around">
+                        <div className="col-md-6 col-12 d-flex flex-column row-gap-2 CartsBox">
                         {isSuccess ? user?.carts.map((product: Product) => {
-                            return <div key={product.id} className={`col-12 d-flex align-items-center ${isSuccess ? `justify-content-around` : isFetching ? 'justify-content-center' : ''}`}>
-                                <div className="col-3 rounded d-flex  overflow-hidden">
+                            return <div key={product.id} className={`col-12 d-flex align-items-center flex-column flex-md-row ${isSuccess ? `justify-content-around row-gap-3 row-gap-md-0` : isFetching ? 'justify-content-center' : ''}`}>
+                                <div className="col-md-3 col-8 rounded d-flex  overflow-hidden">
                                     <img alt="productImg" className="img-fluid h-100 w-100" src={product.thumbnail} />
                                 </div>
-                                <div className="col-7 d-flex flex-column">
-                                    <div className="col-12">{product.title}</div>
-                                    <p className="col-12">{product.description}</p>
-                                    <div className="col-12">{product.price} $</div>
+                                <div className="col-md-7 col-12  d-flex flex-column row-gap-md-2 ">
+                                    <div className="col-12 text-md-start text-center">{product.title}</div>
+                                    <p className="col-12 text-md-start text-center m-0">{product.description}</p>
+                                    <div className="col-12 text-md-start text-center">{product.price} $</div>
                                 </div>
                                 <div>
                                     <Tooltip title="Delete">
@@ -97,7 +97,7 @@ return (
                             theme="light"
                         />
                 </div>
-                    <div className="col-4 d-flex p-2 rounded flex-column row-gap-2 CartTotalBox">
+                    <div className="col-md-4 col-11 d-flex p-2 rounded flex-column row-gap-2 CartTotalBox">
                         <h4 className="col-12">Summary</h4>
                             <div className="col-12 d-flex align-items-center totalBox flex-column">
                                 <div className="col-10 mb-3">Subtotal: {total} $</div>

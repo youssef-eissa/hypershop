@@ -21,9 +21,9 @@ const ProductsMapping: FC<TProductsMapping> = ({ products, isSuccess, isFetching
 return (
     <div className='container-fluid'>
         <div className='row'>
-            <div className='col-12 p-4  allProductsShop d-flex flex-wrap gap-3 justify-content-center'>
+            <div className='col-12 p-md-4 p-2  allProductsShop d-flex flex-wrap gap-3 justify-content-center'>
                 {Success&& !isFetching ?products.map((product:any) => {
-                    return <Link onClick={()=>dispatch(setProduct(product))} style={{ textDecoration: 'none', color: 'black' }} to={`/shop/${product.id}`} key={product.id} className='col-3 row-gap-2 d-flex flex-column productShop p-3 rounded'>
+                    return <Link onClick={()=>dispatch(setProduct(product))} style={{ textDecoration: 'none', color: 'black' }} to={`/shop/${product.id}`} key={product.id} className='col-md-3 col-12 row-gap-2 d-flex flex-column productShop p-3 rounded'>
                         <div className='col-12 rounded imgShopBox overflow-hidden'>
                             <img className='img-fluid h-100 w-100' src={product.thumbnail} alt={product.title}/>
                         </div>

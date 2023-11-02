@@ -39,12 +39,12 @@ return (
             </Wrapper>
         </div>
         <div className="row d-flex justify-content-center">
-            <div className="col-10 d-flex justify-content-between p-0 my-5">
-                <div className="col-8 d-flex flex-column contactBoxPage">
+            <div className="col-10 d-flex flex-column flex-md-row justify-content-between p-0 my-5">
+                <div className="col-md-8 col-12 d-flex flex-column contactBoxPage">
                     <h1 className="col-12">Have you any question?</h1>
                     <span className="col-12">Feel free to reach out to us</span>
-                    <form onSubmit={handleSubmit} className="col-12 d-flex flex-wrap justify-content-around">
-                        <div className="col-5 d-flex flex-column my-4">
+                    <form onSubmit={handleSubmit} className="col-12 d-flex flex-wrap justify-content-md-around justify-content-center">
+                        <div className="col-md-5 col-11 d-flex flex-column my-4">
                             <input
                             type="text"
                             name="fullname"
@@ -56,7 +56,7 @@ return (
                         />
                         {errors.fullname && touched.fullname && <p style={{color: 'red'}} className="col-12">{errors.fullname}</p>}
                         </div>
-                        <div className="col-5 d-flex flex-column my-4">
+                        <div className="col-md-5 col-11 d-flex flex-column my-4">
                             <input
                             type="email"
                             name="email"
@@ -68,7 +68,7 @@ return (
                         />
                         {errors.email && touched.email && <p style={{color: 'red'}} className="col-12">{errors.email}</p>}
                         </div>
-                        <div className="col-5 d-flex flex-column my-4">
+                        <div className="col-md-5 col-11 d-flex flex-column my-4">
                             <input
                             type="tel"
                             name="phone"
@@ -80,7 +80,7 @@ return (
                         />
                         {errors.phone && touched.phone && <p style={{color: 'red'}} className="col-12">{errors.phone}</p>}
                         </div>
-                        <div className="col-5 d-flex flex-column my-4">
+                        <div className="col-md-5 col-11 d-flex flex-column my-4">
                             <input
                             type="text"
                             name="subject"
@@ -103,12 +103,12 @@ return (
                             />
                         {errors.message && touched.message && <p style={{color: 'red'}} className="col-11 d-flex mx-auto">{errors.message}</p>}
                         </div>
-                        <Button className="col-3 rounded p-2" type="submit" >Send</Button>
+                        <Button className="col-md-3 col-6 rounded p-2" type="submit" >Send</Button>
                     </form>
 
                 </div>
-                <div className="col-3 justify-content-center d-flex flex-column rightBoxContactPage rounded">
-                    <div className="col-12 mb-3 d-flex justify-content-between">
+                <div className="col-md-3 col-12 justify-content-center d-flex flex-column rightBoxContactPage rounded">
+                    <div className="col-12 mb-3 mt-3 mt-md-0 d-flex justify-content-between">
                         <div className="col-3 d-flex align-items-start justify-content-center">
                             <PlaceIcon fontSize="large" sx={{color: '#F99417'}}/>
                         </div>

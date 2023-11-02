@@ -69,7 +69,22 @@ function Shop() {
         slidesToShow: 5,
         slidesToScroll: 1,
     }
-    }]
+    },
+    {
+    breakpoint: 1700,
+    initialSlide: 1,
+        settings: {
+        slidesToShow: 5,
+        slidesToScroll: 1,
+    }
+    },{
+    breakpoint: 800,
+    initialSlide: 1,
+        settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+    }
+    },]
     }
 
 return (

@@ -32,3 +32,8 @@ height: 300px;
     background-color: #F99417 !important;
     color: white !important;
 }
+@media  (max-width:768px) {
+    .imgShopBox{
+        height: 200px;
+    }
+}

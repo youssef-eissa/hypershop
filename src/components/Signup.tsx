@@ -104,8 +104,8 @@ return (
     <div className='container'>
         <div className='row'>
             <div className='col-12 p-0 min-vh-100 d-flex justify-content-center align-items-center'>
-                <div className='signup p-5 rounded col-12 d-flex'>
-                    <form onSubmit={handleForm} autoComplete='off' className='col-6 d-flex flex-column align-items-center'>
+                <div className='signup p-5 rounded col-12 flex-column-reverse flex-md-row d-flex'>
+                    <form onSubmit={handleForm} autoComplete='off' className='col-md-6 col-12 d-flex flex-column align-items-center'>
                         <h1 className='col-12 mb-3'>Create an account</h1>
 
                         <label className='col-11 mb-2' htmlFor='Name'>Full Name <span>*</span>
@@ -176,7 +176,7 @@ return (
                             autoComplete='off'
                         />
                         {touched.confirmPassword && errors.confirmPassword && <p style={{ color: 'red' }} className='col-11'>{errors.confirmPassword}</p>}
-                        <button type='submit' className='btn btn-primary col-7 d-flex align-items-center justify-content-center'>Register {status==='pending' && <CircularProgress className='ms-2' size={24} sx={{color:'white'}} />}</button>
+                        <button type='submit' className='btn mt-3 mt-md-0 btn-primary col-7 d-flex align-items-center justify-content-center'>Register {status==='pending' && <CircularProgress className='ms-2' size={24} sx={{color:'white'}} />}</button>
                     </form>
                     <Snackbar open={NotificationOpen} autoHideDuration={6000} onClose={handleClose}>
                         <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
@@ -184,7 +184,7 @@ return (
                     </Alert>
                     </Snackbar>
                     {isSuccess && <ResponsiveDialog setSignup={setSignup as (e: boolean) => boolean} />}
-                    <div className='col-6 rounded overflow-hidden position-relative welcomeBox'>
+                    <div className='col-md-6 col-12 mb-3 mb-md-0 rounded overflow-hidden position-relative welcomeBox'>
                         <img alt='signupImg' className='img-fluid h-100' src={require('../assets/signup.jpeg')} />
                         <div className='position-absolute z-3 col-12'>Welcome to <span>HyperShop</span>
                         </div>

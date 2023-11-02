@@ -16,10 +16,10 @@ return (
             </Wrapper>
         </div>
         <div className="row d-flex justify-content-center">
-            <div className="col-10 my-5 d-flex justify-content-between">
-                <div className="col-6 leftAboutBox d-flex justify-content-between whyShop flex-wrap">
+            <div className="col-10 my-5 flex-column flex-md-row d-flex justify-content-between">
+                <div className="col-md-6 col-12 leftAboutBox d-flex justify-content-between whyShop flex-wrap">
                     <h1 className="col-12">Why <span>HyperShop</span></h1>
-                    <div className='col-6 d-flex mt-4 justify-content-between'>
+                    <div className='col-md-6 col-12 d-flex mt-4 justify-content-between'>
                         <div className=' d-flex justify-content-center align-items-center icon'>
                             <LocalShippingOutlinedIcon fontSize='large'  sx={{color: '#F99417'}}/>
                         </div>
@@ -28,7 +28,7 @@ return (
                             <p className='col-12'>sit voluptatem accusantium dolore mque laudantium, totam rem aperiam, eaque ipsa quae ab illo.</p>
                         </div>
                     </div>
-                    <div className='col-6 d-flex mt-4 justify-content-between'>
+                    <div className='col-md-6 col-12 d-flex mt-4 justify-content-between'>
                         <div className=' d-flex justify-content-center align-items-center icon'>
                             <MoneyOutlinedIcon fontSize='large'  sx={{color: '#F99417'}}/>
                         </div>
@@ -37,7 +37,7 @@ return (
                             <p className='col-12'>sit voluptatem accusantium dolore mque laudantium, totam rem aperiam, eaque ipsa quae ab illo.</p>
                         </div>
                     </div>
-                        <div className='col-6 d-flex mt-4 justify-content-between'>
+                        <div className='col-md-6 col-12 d-flex mt-4 justify-content-between'>
                         <div className=' d-flex justify-content-center align-items-center icon'>
                             <CardGiftcardIcon fontSize='large'  sx={{color: '#F99417'}}/>
                         </div>
@@ -46,7 +46,7 @@ return (
                             <p className='col-12'>sit voluptatem accusantium dolore mque laudantium, totam rem aperiam, eaque ipsa quae ab illo.</p>
                         </div>
                     </div>
-                    <div className='col-6 d-flex mt-4 justify-content-between'>
+                    <div className='col-md-6 col-12 d-flex mt-4 justify-content-between'>
                         <div className=' d-flex justify-content-center align-items-center icon'>
                             <CachedIcon fontSize='large'  sx={{color: '#F99417'}}/>
                         </div>
@@ -56,7 +56,7 @@ return (
                         </div>
                         </div>
                 </div>
-                <div className='col-5 rounded overflow-hidden '>
+                <div className='col-md-5 col-12 rounded overflow-hidden '>
                     <img alt='img' src={aboutImagePage} className='img-fluid h-100'/>
                 </div>
             </div>

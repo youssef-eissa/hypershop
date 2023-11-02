@@ -105,16 +105,22 @@ return (
             onClose={handleCloseNavMenu}
             sx={{
                 display: { xs: 'block', md: 'none' },
+                justifyContent: 'center',
+                
+                
             }}
+                        
             >
-            {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-            ))}
+            
+            <div style={{width:'300px'}} className='d-flex flex-column'>
+            <Link style={location.pathname === '/' ? { color: '#F99417' } : { color: 'black' }} reloadDocument className='col-12 mb-3 toSection text-center' to='/' >Home</Link>
+            <Link style={location.pathname==='/about'? { color: '#F99417' } : {color: 'black'}} reloadDocument className='col-12 mb-3 toSection text-center' to='/about' >About</Link>
+            <Link style={location.pathname==='/shop'? { color: '#F99417' } : {color: 'black'}} reloadDocument className='col-12 mb-3 toSection text-center' to='/shop' >Shop</Link>
+            <Link style={location.pathname === '/contact' ? { color: '#F99417' } : { color: 'black' }} reloadDocument className='col-12 toSection text-center' to='/contact' >Contact</Link>
+            
+            </div>
             </Menu>
         </Box>
-        <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
         <Typography
             variant="h5"
             noWrap
@@ -128,10 +134,15 @@ return (
             fontWeight: 700,
             letterSpacing: '.3rem',
             color: 'inherit',
-            textDecoration: 'none',
+                textDecoration: 'none',
+            
+            
             }}
         >
-            LOGO
+        <div style={{ cursor: 'pointer' }} onClick={() => { navigate('/'); window.location.reload()}} className='col-12 d-flex-column align-items-center logo '>
+        <div className='col-12 d-flex  justify-content-center align-items-center logo'><ShoppingBasketIcon className='me-2'/>HyperShop</div>
+        <span className='col-12 text-center'>Online store</span>
+            </div>
         </Typography>
         <Box  sx={{ flexGrow:1 , display: { xs: 'none', md: 'flex' } }}>
             <Link style={location.pathname === '/' ? { color: '#F99417' } : { color: 'white' }} reloadDocument className='col-2 toSection text-center' to='/' >Home</Link>
@@ -140,12 +151,14 @@ return (
             <Link style={location.pathname==='/contact'? { color: '#F99417' } : {color: 'white'}} reloadDocument className='col-2 toSection text-center' to='/contact' >Contact</Link>
         </Box>
 
-                <Box sx={{ flexGrow: 0 }}>
-            <Link reloadDocument className='col-5 me-5' to='/cart'> <CustomizedBadges user={user as OneUser} isSuccess={isSuccess} /></Link>
+            <Box sx={{ flexGrow: 0 ,width:'150px'}}>
+            <Link reloadDocument className='col-5 me-md-5 me-3' to='/cart'> <CustomizedBadges user={user as OneUser} isSuccess={isSuccess} /></Link>
             <Tooltip title="Open settings">
-            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                        
+            <IconButton className='col-3  just' onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt={user?.name} src="/static/images/avatar/2.jpg" />
-            </IconButton>
+                        </IconButton>
+                        
             </Tooltip>
                     <Menu
 
@@ -165,7 +178,7 @@ return (
             onClose={handleCloseUserMenu}
                     >
                     <div style={{ width: '200px' }} className='d-flex flex-column align-items-center settingBox'>
-                    <Link reloadDocument onClick={()=>dispatch(setUser(user as OneUser))} className='col-10 mb-3 p-1 rounded text-center toProfile' to={`/profile/${user?.id}`}>Profile</Link>
+                    <Link reloadDocument onClick={()=>dispatch(setUser(user as OneUser))} className='col-10 mb-3 p-1 rounded text-center toProfile' to={`/profile/${user?.name}`}>Profile</Link>
                 <Button onClick={handlelogout} className='col-10 rounded'>logout</Button>
                 </div>
             </Menu>

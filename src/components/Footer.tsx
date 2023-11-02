@@ -24,19 +24,19 @@ function Footer() {
 return (
     <div className='container-fluid footer '>
         <div className='row'>
-            <div className='col-12 p-5 d-flex '>
-                <div className='col-3 footerbox align-content-start p-2 d-flex flex-wrap'>
+            <div className='col-12 p-md-5 p-3 d-flex flex-column flex-md-row '>
+                <div className='col-md-3 col-12 footerbox align-content-start p-2 d-flex flex-wrap'>
                     <h1 className='col-12  mb-4'>About us</h1>
                     <p className='col-12 '>Ut enim ad minim veniam perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae.</p>
                 </div>
-                    <div className='col-3 footerbox align-content-start p-2 d-flex flex-wrap'>
+                    <div className='col-md-3 col-12 footerbox align-content-start p-2 d-flex flex-wrap'>
                     <h1 className='col-12 mb-4'>Get in Touch</h1>
                     <p className='col-12 '>34/8,  East Hukupara, Gifirtok, Sadan.
                         support@fruitkha.com <br></br>
                         +00 111 222 3333</p>
 
                 </div>
-                    <div className='col-3 footerbox align-content-start p-2 d-flex flex-wrap'>
+                    <div className='col-md-3 col-12 footerbox align-content-start p-2 d-flex flex-wrap'>
                     <h1 className='col-12 mb-4'>Pages</h1>
                     <ul className='col-12 d-flex flex-column'>
                         <Link onClick={()=>{window.scrollTo(0,0)}} to='/' className='col-12 mb-2 position-relative footerLink'>Home <ArrowForwardIosIcon className='icon position-absolute' sx={{ fontSize: 15 }}/> </Link>
@@ -46,7 +46,7 @@ return (
                     </ul>
 
                 </div>
-                <div className='col-3 footerbox p-2 d-flex align-content-start flex-wrap'>
+                <div className='col-md-3 col-12 footerbox p-2 d-flex align-content-start flex-wrap'>
                     <h1 className='col-12  mb-4'>Subscribe</h1>
                     <p className='col-12 '>Subscribe to our mailing list to get the latest updates.</p>
                     <form onSubmit={handleFormSubmit} className='col-12 d-flex justify-content-between align-item-center '>
@@ -62,7 +62,7 @@ return (
                         />
                         {errors.email && touched.email && <p style={{ color: 'red',filter: 'none' }} className='col-12'>{errors.email}</p>}
                         </div>
-                        <button type='submit' className='col-3 p-2 d-flex justify-content-center align-items-center '><SendIcon sx={{color:'#F99417'}}/></button>
+                        <button type='submit' className='col-3 rounded p-2 d-flex justify-content-center align-items-center '><SendIcon sx={{color:'#F99417'}}/></button>
 
                     </form>
                 </div>

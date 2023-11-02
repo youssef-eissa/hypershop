@@ -10,14 +10,14 @@ import { useMutation } from '@tanstack/react-query';
 import './backdrop.css'
 import { setUser } from '../../redux/user';
 import { CircularProgress } from '@mui/material';
-import { ToastContainer, toast } from 'react-toastify';
 
 
 
 type TBackDrop = {
-    refetch: () => void
+    refetch: () => void;
+    notify: (e:string)=>void
 }
-export default function SimpleBackdrop({refetch}: TBackDrop) {
+export default function SimpleBackdrop({refetch,notify}: TBackDrop) {
     const user = useSelector(({ user }: { user: { user: OneUser } }) => user.user) 
     const dispatch = useDispatch()
     const schema = yup.object().shape({
@@ -55,10 +55,10 @@ const handleOpen = () => {
             handleClose()
             refetch()
             dispatch(setUser(data.data))
-            toast.success("profile updated")
+            notify('Profile updated successfully')
         }
     })
-
+    
     function handleSubmitForm(id: number, e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault()
         mutate(id)
@@ -74,10 +74,10 @@ return (
         className=' d-flex  justify-content-center align-items-center'
         >
             <form method='PUT' onSubmit={(e) => handleSubmitForm(user.id, e)} style={{backgroundColor: 'white'}} className='col-10 p-3 d-flex flex-column align-items-center justify-content-center rounded overflow-hidden'>
-                <div className='col-8 d-flex'>
-                    <label style={{color: 'black'}} className='col-2 d-flex justify-content-center align-items-center' htmlFor="name">Name</label>
+                <div className='col-8 d-flex justify-content-md-around flex-column flex-md-row'>
+                    <label style={{color: 'black'}} className='col-md-2 col-12 d-flex justify-content-center align-items-center' htmlFor="name">Name</label>
                 <input
-                    className='col-9 mb-3'
+                    className='col-md-9 col-12 mb-3'
                     value={values.name}
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -88,10 +88,10 @@ return (
                 </div>
                 
                 {errors.name && touched.name ? <p className='text-danger'>{errors.name}</p> : null}
-                <div className='col-8 d-flex'>
-                    <label style={{color: 'black'}} className='col-2 d-flex justify-content-center align-items-center' htmlFor="email">Email</label>
+                <div className='col-8 d-flex justify-content-md-around flex-column flex-md-row'>
+                    <label style={{color: 'black'}} className='col-md-2  col-12 d-flex justify-content-center align-items-center' htmlFor="email">Email</label>
                     <input
-                    className='col-9 mb-3'
+                    className='col-md-9 col-12 mb-3'
                     value={values.email}
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -101,10 +101,10 @@ return (
                 />
                 </div>
                 {errors.email && touched.email ? <p className='text-danger'>{errors.email}</p> : null}
-                <div className='col-8 d-flex'>
-                    <label style={{color: 'black'}} className='col-2 d-flex justify-content-center align-items-center' htmlFor="username">Username</label>
+                <div className='col-8 d-flex justify-content-md-around flex-column flex-md-row'>
+                    <label style={{color: 'black'}} className='col-md-2 col-12 d-flex justify-content-center align-items-center' htmlFor="username">Username</label>
                     <input
-                    className='col-9 mb-3'
+                    className='col-md-9 col-12 mb-3'
                     value={values.username}
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -114,10 +114,10 @@ return (
                 />
                 </div>
                 {errors.username && touched.username ? <p className='text-danger'>{errors.username}</p> : null}
-                <div className='col-8 d-flex'>
-                    <label style={{color: 'black'}} className='col-2 d-flex justify-content-center align-items-center' htmlFor="pw">Password</label>
+                <div className='col-8 d-flex justify-content-md-around flex-column flex-md-row'>
+                    <label style={{color: 'black'}} className='col-md-2 col-12 d-flex justify-content-center align-items-center' htmlFor="pw">Password</label>
                     <input
-                    className='col-8 mb-3'
+                    className='col-md-9 col-12 mb-3'
                     value={values.password}
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -128,10 +128,10 @@ return (
                 />
                 </div>
                 {errors.password && touched.password ? <p className='text-danger'>{errors.password}</p> : null}
-                <div className='col-8 d-flex'>
-                    <label style={{color: 'black'}} className='col-2 d-flex justify-content-center align-items-center' htmlFor="cp">Confirm Password</label>
+                <div className='col-8 d-flex justify-content-md-around flex-column flex-md-row'>
+                    <label style={{color: 'black'}} className='col-md-2 col-12 d-flex justify-content-center align-items-center' htmlFor="cp">Confirm Password</label>
                     <input
-                className='col-8 mb-3'
+                className='col-md-9 col-12 mb-3'
                     value={values.confirmPassword}
                     onChange={handleChange}
                     onBlur={handleBlur}
@@ -142,19 +142,8 @@ return (
                 />
                 </div>
                 {errors.confirmPassword && touched.confirmPassword ? <p className='text-danger'>{errors.confirmPassword}</p> : null}
-                <Button disabled={!isValid} type='submit' className='col-2 rounded d-flex justify-content-center p-1 '>Submit {isPending ? <div className=' col-4 d-flex align-items-center justify-content-center'><CircularProgress color="inherit" size={20} /></div> : null}</Button>
-                <ToastContainer
-                    position="top-center"
-                    autoClose={1000}
-                    hideProgressBar
-                    newestOnTop={true}
-                    closeOnClick
-                    rtl={false}
-                    pauseOnFocusLoss
-                    draggable
-                    pauseOnHover
-                    theme="light"
-                />
+                <Button disabled={!isValid} type='submit' className='col-md-2 col-6 rounded d-flex justify-content-center p-1 '>Submit {isPending ? <div className=' col-4 d-flex align-items-center justify-content-center'><CircularProgress color="inherit" size={20} /></div> : null}</Button>
+               
             </form>
         </Backdrop>
     </div>

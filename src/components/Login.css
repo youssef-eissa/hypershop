@@ -71,3 +71,11 @@
 .SignUpLink:hover{
     background-color: #FFCD4B;
 }
+@media  (max-width: 768px) {
+    .loginCircle:nth-child(1),
+    .loginCircle:nth-child(2){ 
+            width: 200% !important;
+            right: 50% !important;
+            transform: translateX(50%);
+        }
+}

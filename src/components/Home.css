@@ -1,3 +1,6 @@
+body{
+    padding: 0!important;
+}
 .ShopNowLink{
     text-decoration: none;
     color: white;
@@ -7,6 +10,10 @@
     background-color: #F99417;
     transition: 0.3s;
 }
+.imgSliderBox{
+    height: 100vh;
+}
+
 .ShopNowLink:hover{
     background-color: #FFCD4B;
 }
@@ -166,4 +173,26 @@
 }
 .productBoxHomePage{
     text-decoration: none;
+}
+
+@media (max-width:768px) {
+    .imgSliderBox{
+        height: 500px;
+    }
+    .icon {
+        border: 1px dashed #F99417;
+        border-radius: 50%;
+        width: 80px;
+        height: 80px;
+        }
+    .productsTitleHomePage div:nth-child(1) {
+        font-size: 25px;
+    }
+        .productsTitleHomePage div:nth-child(2) {
+        font-size: 18px;
+    }
+    .aboutBox h3 {
+    font-weight: 900;
+    font-size: 35px;
+        }
 }
