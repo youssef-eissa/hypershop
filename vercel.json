@@ -19,7 +19,11 @@
 "routes": [
     {
     "src": "/(.*)",
-    "dest": "server.js"
+    "dest": "server.ts"
+    },
+    {
+    "src": "/src/components",
+    "dest": "server.ts"
     }
 ]
 }
