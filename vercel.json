@@ -1,0 +1,25 @@
+{
+"version": 2,
+"builds": [
+    {
+    "src": "/src/components",
+    "use": "@vercel/node",
+    "config": {
+        "includeFiles": ["userDB.json"]
+    }
+    },
+    {
+    "src": "/(.*)",
+    "use": "@vercel/node",
+    "config": {
+        "includeFiles": ["server.ts"]
+    }
+    }
+],
+"routes": [
+    {
+    "src": "/(.*)",
+    "dest": "server.js"
+    }
+]
+}

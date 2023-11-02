@@ -35,6 +35,14 @@
       "email": "sa@sa.com",
       "password": "11111111",
       "carts": []
+    },
+    {
+      "id": 3,
+      "name": "aad",
+      "username": "dsa",
+      "email": "dsadsa@dds.d",
+      "password": "ewqewqewq",
+      "carts": []
     }
   ]
 }
