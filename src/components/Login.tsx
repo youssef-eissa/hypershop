@@ -106,7 +106,7 @@ return (
                         onBlur={() => { handleBlurLogin(values.username)}}
                         autoComplete='current-username'
                     />
-                    {errors.username && touched.username && <p style={{ color: 'red' }} className=' col-11 text-start mb-2'>{errors.username}</p>}
+                    {errors.username && touched.username && <p style={{ color: 'red' }} className=' col-9  mb-2'>{errors.username}</p>}
                         <input
                         onChange={handleChange}
                         className='mb-3 col-9 py-3 px-2 rounded'
@@ -117,7 +117,7 @@ return (
                         value={values.password}
                         autoComplete='current-password'
                     />
-                    {errors.password && touched.password && <p style={{ color: 'red' }} className=' col-11 text-start mb-2'>{errors.password}</p> }
+                    {errors.password && touched.password && <p style={{ color: 'red' }} className=' col-9 text-start mb-2'>{errors.password}</p> }
                     <Button className='col-3 rounded d-flex justify-content-center align-items-center p-2' type='submit'>Sign in{status==='pending' && <CircularProgress className='ms-2' size={24} sx={{color:'white'}} />}</Button>
                     <div className='col-12 d-flex justify-content-center align-items-center  mt-2 SignUpLinkCon flex-column'>
                         <span className='col-12 text-center my-2'>Don't have an account?</span>
