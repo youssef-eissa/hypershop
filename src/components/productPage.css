@@ -13,7 +13,7 @@
     background-color: yellow;
 }
 @media (max-width:768px) {
-    ProductPageImages{
-        height: 100px;
+    .ProductPageImages{
+        height: 100px ;
     }
 }
