@@ -9,8 +9,6 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import './AppBar.css';
 import { Link } from 'react-router-dom';
@@ -22,7 +20,6 @@ import { useLocation } from 'react-router-dom';
 import CustomizedBadges from './CartBadge';
 import { Button } from '../ReusableComponents/Button.style';
 import { setUser } from '../../redux/user';
-const pages = ['Product', 'Pricing', 'Blog'];
 type TResponsiveAppBar = {
     setSignup: (e: boolean) => boolean;
     isSuccess: boolean;
@@ -32,7 +29,6 @@ function ResponsiveAppBar({ setSignup,user,isSuccess }: TResponsiveAppBar) {
     const location=useLocation()
     const dispatch=useDispatch()
     const navigate = useNavigate()
-    
 const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
 const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
@@ -106,18 +102,13 @@ return (
             sx={{
                 display: { xs: 'block', md: 'none' },
                 justifyContent: 'center',
-                
-                
             }}
-                        
             >
-            
             <div style={{width:'300px'}} className='d-flex flex-column'>
             <Link style={location.pathname === '/' ? { color: '#F99417' } : { color: 'black' }} reloadDocument className='col-12 mb-3 toSection text-center' to='/' >Home</Link>
             <Link style={location.pathname==='/about'? { color: '#F99417' } : {color: 'black'}} reloadDocument className='col-12 mb-3 toSection text-center' to='/about' >About</Link>
             <Link style={location.pathname==='/shop'? { color: '#F99417' } : {color: 'black'}} reloadDocument className='col-12 mb-3 toSection text-center' to='/shop' >Shop</Link>
             <Link style={location.pathname === '/contact' ? { color: '#F99417' } : { color: 'black' }} reloadDocument className='col-12 toSection text-center' to='/contact' >Contact</Link>
-            
             </div>
             </Menu>
         </Box>
