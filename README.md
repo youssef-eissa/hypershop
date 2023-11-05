@@ -33,14 +33,16 @@ The hypershop store website includes the following pages:
 
 # Screenshots
 
-<img alt='home' src='/src/screenshots/home1.png'>
-<img alt='home' src='/src/screenshots/home2.png'>
-<img alt='home' src='src/screenshots/home3.png'>
-<img alt='home' src='/src/screenshots/home4.png'>
-<img alt='about' src='/src/screenshots/movie.png'>
-<img alt='about' src='/src/screenshots/favourites.png'>
-<img alt='about' src='/src/screenshots/contact.png'>
+<img alt='home' src="/src/screenshot/home1.png">
+<img alt='home' src='/src/screenshot/home2.png'>
+<img alt='home' src='src/screenshot/home3.png'>
+<img alt='home' src='/src/screenshot/home4.png'>
+<img alt='about' src='/src/screenshot/about.png'>
+<img alt='about' src='/src/screenshot/contact.png'>
+<img alt='about' src='/src/screenshot/shop.png'>
+<img alt='about' src='/src/screenshot/cart.png'>
+<img alt='about' src='/src/screenshot/cart2.png'>
 
 # Project Link
 
-https://hypershop-three.vercel.app/
+https://hypershop-three.vercel.app/login

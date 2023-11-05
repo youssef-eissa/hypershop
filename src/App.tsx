@@ -27,7 +27,7 @@ function App() {
   const navigate=useNavigate()
   const user = useSelector<{ user: { user: OneUser } }>((state) => state.user.user) as OneUser
 
-  const dispatch=useDispatch()
+  const dispatch = useDispatch()
   const { token, setToken } = useToken()
   const [signup, setSignup] = useLocalStorage<boolean>('signup', false)
   function getUser() {
@@ -38,16 +38,15 @@ function App() {
         queryFn: getUser,
       select: (data) => data.data.find((TheUser: OneUser) => TheUser.id === user.id),
     })
-  useEffect(() => {
-  window.addEventListener('load', () => {
-    if (!token && location.pathname==='/login' ) {
-      navigate('/login')
-      localStorage.clear()
-      setSignup(false)
-    }
-  })
+//   useEffect(() => {
+//   window.addEventListener('load', () => {
+//     if (!token || !signup) {
+//       localStorage.clear()
+//       setSignup(false)
+//     }
+//   })
 
-},[token,navigate,location.pathname,setSignup])
+// },[location.pathname,navigate,setSignup,token,signup])
 
 
   if (!token && !signup) {
