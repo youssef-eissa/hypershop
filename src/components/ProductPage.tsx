@@ -60,9 +60,9 @@ return (
                     <div className="col-12">Brand : <span>{product.brand}</span></div>
                     <div className="col-12">Rating : <span>{ product.rating}</span></div>
                 </div>
-                <div className="col-md-6 col-12 d-flex flex-wrap gap-3 mt-3 justify-content-center">
+                <div className="col-md-6 col-12 d-flex flex-wrap gap-3 mt-3 justify-content-md-center justify-content-between">
                     {product.images.map((img: string) => {
-                        return <div key={img} className="col-3 rounded overflow-hidden">
+                        return <div key={img} className="col-md-3 col-5 ProductPageImages rounded overflow-hidden">
                             <img alt="img" src={img} className="img-fluid h-100" />
                         </div>
                     })}
