@@ -63,7 +63,7 @@ return (
                 <div className="col-md-6 col-12 d-flex flex-wrap gap-3 mt-3 justify-content-center">
                     {product.images.map((img: string) => {
                         return <div key={img} className="col-3 rounded overflow-hidden">
-                            <img alt="img" src={ img} className="img-fluid h-100" />
+                            <img alt="img" src={img} className="img-fluid h-100" />
                         </div>
                     })}
                 </div>

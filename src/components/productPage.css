@@ -12,3 +12,8 @@
 .productInfo del {
     background-color: yellow;
 }
+@media (max-width:768px) {
+    ProductPageImages{
+        height: 200px;
+    }
+}
