@@ -47,8 +47,10 @@ function Signup({setSignup}: TSignup) {
 
     const { mutate ,isSuccess,status} = useMutation({
         mutationFn: loginUser,
-        onSuccess: () => {
+        onSuccess: (data) => {
             handleClick()
+                console.log(data);
+                
             
         }
     })
@@ -79,7 +81,7 @@ function Signup({setSignup}: TSignup) {
         },
     })
     function getUsers() {
-        return axios.get('http://localhost:3001/users')
+        return axios.get('https://hypershop-db.vercel.app/users')
     }
     const { data:UsersInfoArray} = useQuery({
         queryKey: ['users'],
@@ -89,7 +91,7 @@ function Signup({setSignup}: TSignup) {
     })
 
     function loginUser(info:UserInfo) {
-        return  axios.post('http://localhost:3001/users', info)
+        return  axios.post('https://hypershop-db.vercel.app/users', info)
     }
 
 

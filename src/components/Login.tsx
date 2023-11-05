@@ -40,16 +40,17 @@ function Login({ setToken,  user, dispatch, setSignup }: TLogin) {
 
 
 const getUserInfo=()=> {
-    return axios.get('http://localhost:3001/users')
+    return axios.get('https://hypershop-db.vercel.app/users')
 }
     const { data:UsersInfoArray} = useQuery({
         queryKey: ['users'],
         queryFn: getUserInfo,
         select: (data) => data.data as OneUser[],
+        
     })
 
 function loginUser(info:loginInfo) {
-    return axios.post('http://localhost:8080/login', info)
+    return axios.post('https://hypershop-db.vercel.app/token', info)
 }
 
     const {mutate,status} = useMutation({
