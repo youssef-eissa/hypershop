@@ -29,7 +29,7 @@ function Cart({ user, isFetching, isSuccess, refetch }: TCart) {
 
     function removeProduct(arg: IUpdateCart) {
         const {id,productRemoved}=arg
-        return axios.put(`http://localhost:3001/users/${id}`,{...user,carts:[...user.carts.filter((product:Product) => product.id !== productRemoved.id)]})
+        return axios.put(`https://hypershop-db.vercel.app/users/${id}`,{...user,carts:[...user.carts.filter((product:Product) => product.id !== productRemoved.id)]})
     }
 const { mutate,isPending} = useMutation({
     mutationFn: removeProduct,

@@ -22,7 +22,7 @@ const dispatch=useDispatch()
     const product = useSelector<{ product: { product: Product } }>((state) => state.product.product) as Product
 
     function UpdateUserCart(id:number) {
-        return axios.put(`http://localhost:3001/users/${id}`,{...user,carts:isSuccess&&[...user.carts ,product]})
+        return axios.put(`https://hypershop-db.vercel.app/users/${id}`,{...user,carts:isSuccess&&[...user.carts ,product]})
     }
 
     const { mutate } = useMutation({

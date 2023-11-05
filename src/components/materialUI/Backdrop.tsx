@@ -47,7 +47,7 @@ const handleOpen = () => {
     setOpen(true);
 };
     function updateProfile(id:number) {
-        return  axios.put(`http://localhost:3001/users/${id}`,{...user,name:values.name,email:values.email,username:values.username,password:values.password} )
+        return  axios.put(`https://hypershop-db.vercel.app/users/${id}`,{...user,name:values.name,email:values.email,username:values.username,password:values.password} )
     }
     const {mutate,isPending}=useMutation({
         mutationFn: updateProfile,
