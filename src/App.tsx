@@ -18,6 +18,7 @@ import Contact from "./components/Contact";
 import Profile from "./components/Profile";
 import { useNavigate,useLocation } from "react-router-dom";
 import { useEffect } from "react";
+import Notfound from "./components/Notfound";
 
 
 
@@ -38,15 +39,15 @@ function App() {
         queryFn: getUser,
       select: (data) => data.data.find((TheUser: OneUser) => TheUser.id === user.id),
     })
-//   useEffect(() => {
-//   window.addEventListener('load', () => {
-//     if (!token || !signup) {
-//       localStorage.clear()
-//       setSignup(false)
-//     }
-//   })
+  useEffect(() => {
+    window.addEventListener('load', () => {
+      if (!token&&location.pathname!=='/signup' ) {
+        navigate('/login')
+        localStorage.clear()
+      }
+  })
+  },[navigate,token,signup,location.pathname])
 
-// },[location.pathname,navigate,setSignup,token,signup])
 
 
   if (!token && !signup) {
@@ -60,8 +61,6 @@ function App() {
     </Routes>
   }
 
- 
-
   return (
     <div >
       <>
@@ -73,7 +72,8 @@ function App() {
         <Route path="/" element={<Home />} />
           <Route path="/shop/:id" element={<ProductPage isSuccess={isSuccess} user={theUser as OneUser} refetch={refetch} />} />
           <Route path="/cart" element={<Cart refetch={refetch} isFetching={isFetching} isSuccess={isSuccess} user={theUser as OneUser} />} />
-          <Route path="/profile/:id" element={<Profile user={user } refetch={refetch} /> } />
+          <Route path="/profile/:id" element={<Profile user={user} refetch={refetch} />} />
+          <Route path="*" element={<Notfound/> } />
         </Routes>
             <Footer/>
           </>

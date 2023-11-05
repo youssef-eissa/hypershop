@@ -48,11 +48,11 @@ const handleCloseUserMenu = () => {
 };
 function handlelogout() {
     localStorage.clear()
-        setSignup(false)
         dispatch(resetUser())
         window.location.reload()
         navigate('/login')
-    }
+}
+    
 
 return (
     <AppBar sx={{ backgroundColor: "transparent",boxShadow: "none",padding:0 }} position="static">
@@ -170,7 +170,7 @@ return (
                     >
                     <div style={{ width: '200px' }} className='d-flex flex-column align-items-center settingBox'>
                     <Link reloadDocument onClick={()=>dispatch(setUser(user as OneUser))} className='col-10 mb-3 p-1 rounded text-center toProfile' to={`/profile/${user?.name}`}>Profile</Link>
-                <Button onClick={handlelogout} className='col-10 rounded'>logout</Button>
+                    <Button onClick={handlelogout} className='col-10 rounded'>logout</Button>
                 </div>
             </Menu>
         </Box>
