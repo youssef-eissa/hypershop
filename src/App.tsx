@@ -16,11 +16,15 @@ import { useQuery } from '@tanstack/react-query';
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Profile from "./components/Profile";
+import { useNavigate,useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 
 
 
 function App() {
+  const location = useLocation()
+  const navigate=useNavigate()
   const user = useSelector<{ user: { user: OneUser } }>((state) => state.user.user) as OneUser
 
   const dispatch=useDispatch()
@@ -34,6 +38,16 @@ function App() {
         queryFn: getUser,
       select: (data) => data.data.find((TheUser: OneUser) => TheUser.id === user.id),
     })
+  useEffect(() => {
+  window.addEventListener('load', () => {
+    if (!token && location.pathname==='/login' ) {
+      navigate('/login')
+      localStorage.clear()
+      setSignup(false)
+    }
+  })
+
+},[token,navigate,location.pathname,setSignup])
 
 
   if (!token && !signup) {
@@ -46,6 +60,8 @@ function App() {
           <Route path="/signup" element={<Signup setSignup={setSignup as () => boolean} />}/>
     </Routes>
   }
+
+ 
 
   return (
     <div >
