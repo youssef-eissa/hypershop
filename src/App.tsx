@@ -27,7 +27,7 @@ function App() {
   const { token, setToken } = useToken()
   const [signup, setSignup] = useLocalStorage<boolean>('signup', false)
   function getUser() {
-        return axios.get('http://localhost:3001/users')
+        return axios.get('https://hypershop-db.vercel.app/users')
     }
     const {data:theUser,isSuccess,refetch,isFetching}=useQuery({
         queryKey: ['users'],
