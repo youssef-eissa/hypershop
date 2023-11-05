@@ -1,6 +1,5 @@
 .emptyCart {
     min-height: 500px;
-   
 }
 .emptyCart div{
 color: #555;
@@ -42,4 +41,13 @@ color: #555;
     background-color: #F99417;
     left: 0;
     bottom: -10px;
+}
+
+@media (max-width:768px) {
+    .emptyCart {
+        min-height: 200px;
+    }
+    .emptyCart div{
+        font-size: 25px;
+    }
 }
