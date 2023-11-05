@@ -50,12 +50,9 @@ function Signup({setSignup}: TSignup) {
         onSuccess: (data) => {
             handleClick()
                 console.log(data);
-                
-            
         }
     })
-    
-    
+
 
     const { values, handleSubmit, handleReset, handleBlur, handleChange, errors, touched} = useFormik({
         initialValues: {
@@ -69,7 +66,7 @@ function Signup({setSignup}: TSignup) {
         onSubmit: (values) => {
             if (UsersInfoArray&&values.fullname&&values.username&&values.email&&values.password&&values.confirmPassword) {
             mutate({
-            id: UsersInfoArray[UsersInfoArray.length - 1].id + 1,
+            id: UsersInfoArray.length + 1,
             name: values.fullname,
             username: values.username,
             email: values.email,
@@ -91,7 +88,7 @@ function Signup({setSignup}: TSignup) {
     })
 
     function loginUser(info:UserInfo) {
-        return  axios.post('https://hypershop-db.vercel.app/users', info)
+        return axios.post('https://hypershop-db.vercel.app/users', info)
     }
 
 
