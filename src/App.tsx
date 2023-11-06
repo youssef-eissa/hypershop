@@ -41,7 +41,6 @@ function App() {
 useEffect(()=>{
   if (!token && signup && location.pathname === '/login') {
     setSignup(false)
-    window.location.reload()
   }
 },[location.pathname])
   if (!token && !signup) {
