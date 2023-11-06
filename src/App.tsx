@@ -3,7 +3,7 @@ import useToken from "./components/hooks/useToken";
 import { UserToken ,OneUser} from "./types/app";
 import useLocalStorage from "use-local-storage";
 import { useDispatch, useSelector } from 'react-redux';
-import { Route, Routes } from "react-router-dom";
+import {  Route, Routes,useLocation } from "react-router-dom";
 import Signup from "./components/Signup";
 import Home from "./components/Home";
 import NavBar from "./components/NavBar";
@@ -16,16 +16,14 @@ import { useQuery } from '@tanstack/react-query';
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Profile from "./components/Profile";
-import { useNavigate,useLocation } from "react-router-dom";
-import { useEffect } from "react";
 import Notfound from "./components/Notfound";
+import { useEffect } from "react";
 
 
 
 
 function App() {
   const location = useLocation()
-  const navigate=useNavigate()
   const user = useSelector<{ user: { user: OneUser } }>((state) => state.user.user) as OneUser
 
   const dispatch = useDispatch()
@@ -39,17 +37,12 @@ function App() {
         queryFn: getUser,
       select: (data) => data.data.find((TheUser: OneUser) => TheUser.id === user.id),
     })
-  useEffect(() => {
-    window.addEventListener('load', () => {
-      if (!token&&location.pathname!=='/signup' ) {
-        navigate('/login')
-        localStorage.clear()
-      }
-  })
-  },[navigate,token,signup,location.pathname])
 
-
-
+useEffect(()=>{
+  if (!token&&signup&&location.pathname==='/login') {
+    setSignup(false)
+  }
+},[location.pathname])
   if (!token && !signup) {
     return <Login
     token={token as string} setToken={setToken as (userToken: UserToken) => void} user={user as OneUser} dispatch={dispatch as () => OneUser}  setSignup={setSignup as () => boolean}
@@ -61,11 +54,14 @@ function App() {
     </Routes>
   }
 
+
   return (
     <div >
       <>
+        
         <NavBar user={theUser as OneUser} isSuccess={isSuccess} setSignup={setSignup as (e:boolean) => boolean}  />
         <Routes>
+        {/* <Route path="/" element={token ? <Home /> : <Navigate to="/login"  replace />}/> */}
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route  path="/shop" element={<Shop />} />
@@ -73,7 +69,7 @@ function App() {
           <Route path="/shop/:id" element={<ProductPage isSuccess={isSuccess} user={theUser as OneUser} refetch={refetch} />} />
           <Route path="/cart" element={<Cart refetch={refetch} isFetching={isFetching} isSuccess={isSuccess} user={theUser as OneUser} />} />
           <Route path="/profile/:id" element={<Profile user={user} refetch={refetch} />} />
-          <Route path="*" element={<Notfound/> } />
+          <Route path="*" element={<Notfound />} />
         </Routes>
             <Footer/>
           </>

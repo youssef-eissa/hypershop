@@ -10,6 +10,7 @@ import Snackbar from '@mui/material/Snackbar';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import { useState } from 'react';
 import ResponsiveDialog from './materialUI/dialog';
+import { Link } from 'react-router-dom';
 
 
 
@@ -105,6 +106,7 @@ return (
             <div className='col-12 p-0 min-vh-100 d-flex justify-content-center align-items-center'>
                 <div className='signup p-5 rounded col-12 flex-column-reverse flex-md-row d-flex'>
                     <form onSubmit={handleForm} autoComplete='off' className='col-md-6 col-12 d-flex flex-column align-items-center'>
+                        <Link className='col-12 mb-2' to='/login'>Back to login</Link>
                         <h1 className='col-12 mb-3'>Create an account</h1>
 
                         <label className='col-11 mb-2' htmlFor='Name'>Full Name <span>*</span>

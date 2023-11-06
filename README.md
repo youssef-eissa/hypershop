@@ -45,4 +45,4 @@ The hypershop store website includes the following pages:
 
 # Project Link
 
-https://hypershop-three.vercel.app/login
+https://hypershop-three.vercel.app
