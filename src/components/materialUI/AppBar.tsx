@@ -55,8 +55,9 @@ function handlelogout() {
     
 
 return (
-    <AppBar sx={{ backgroundColor: "transparent",boxShadow: "none",padding:0 }} position="static">
-        <Container style={{padding:0}} maxWidth="xl">
+    <div  className='col-12'>
+        <AppBar  sx={{backgroundColor:'inherit' ,boxShadow: "none",padding:0,position:'fixed' }}  >
+        <Container  style={{padding:0}} maxWidth="xl">
         <Toolbar disableGutters>
                 <Typography
             variant="h6"
@@ -177,6 +178,7 @@ return (
         </Toolbar>
     </Container>
     </AppBar>
+    </div>
 );
 }
 export default ResponsiveAppBar;

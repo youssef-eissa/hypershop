@@ -3,5 +3,8 @@
     left: 50%;
     transform: translateX(-50%);
     z-index: 2900;
+    transition: 0.3s;
+    position: fixed !important;
 }
+
 
